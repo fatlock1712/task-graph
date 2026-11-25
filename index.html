@@ -1,60 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Living Graph</title>
-
-  <!-- Tailwind CSS & Resilient D3.js v7 Loader (jsdelivr with cdnjs fallback) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    window.__d3FallbackLoaded = false;
-    window.__d3LoadFailed = false;
-    function loadD3Fallback() {
-      if (window.__d3FallbackLoaded) return;
-      window.__d3FallbackLoaded = true;
-      var s = document.createElement('script');
-      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js';
-      s.onload = function () {
-        if (typeof window.__bootLivingGraph === 'function') window.__bootLivingGraph();
-      };
-      s.onerror = function () {
-        window.__d3LoadFailed = true;
-        if (typeof window.__showD3Error === 'function') window.__showD3Error();
-      };
-      document.head.appendChild(s);
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js" onerror="loadD3Fallback()"></script>
-
-  <!-- Fonts: Inter & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            bg: '#0d0f12',
-            surface: '#15181e',
-            elevated: '#1c2028',
-            border: '#282d38',
-            muted: '#858d9d',
-            bright: '#e5e7eb',
-          },
-        },
-      },
-    };
-  </script>
-
   <style>
+    :root {
+      --bg: #0b0c0e;
+      --surface: #14161a;
+      --elevated: #1c1f26;
+      --border: #272a32;
+      --border-hover: #424756;
+      --text: #e6e8ec;
+      --muted: #8b92a1;
+      --dim: #555c6b;
+      --accent-cyan: #67e8f9;
+      --accent-amber: #fbbf24;
+      --accent-red: #f87171;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
@@ -66,32 +32,250 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: #0d0f12;
-      color: #e5e7eb;
-      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 13px;
+      user-select: none;
     }
 
-    ::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
+    body {
+      display: flex;
+      flex-direction: column;
     }
-    ::-webkit-scrollbar-track {
+
+    button, input, textarea, select {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #272a32; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3f4554; }
+    .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+
+    /* ==================== TOP BAR (48px, SINGLE ROW, NON-CLIPPING) ==================== */
+    .topbar {
+      height: 48px;
+      flex-shrink: 0;
+      width: 100%;
+      background: rgba(20, 22, 26, 0.96);
+      border-bottom: 1px solid var(--border);
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      z-index: 30;
+    }
+
+    .rank-bar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      min-width: 0;
+      flex: 1;
+      padding: 2px 0;
+    }
+
+    .rank-pill {
+      height: 28px;
+      min-width: 28px;
+      padding: 0 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--elevated);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 120ms, border-color 120ms, opacity 120ms;
+    }
+    .rank-pill:hover { border-color: var(--border-hover); }
+    .rank-pill.hidden-rank {
       background: transparent;
+      color: var(--dim);
+      opacity: 0.5;
+      text-decoration: line-through;
     }
-    ::-webkit-scrollbar-thumb {
-      background: #262a34;
-      border-radius: 9999px;
+    .rank-pill.add-rank-btn {
+      background: transparent;
+      color: var(--muted);
+      border-style: dashed;
+      padding: 0 10px;
+      font-size: 11px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #3a404f;
+    .rank-pill.add-rank-btn:hover {
+      color: var(--text);
+      border-color: var(--muted);
     }
 
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
     }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+
+    .btn {
+      height: 30px;
+      padding: 0 10px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--elevated);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: background 120ms, border-color 120ms, color 120ms;
+    }
+    .btn:hover { border-color: var(--border-hover); background: #222630; }
+    .btn.active { border-color: var(--text); background: #262b36; }
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+    .btn-primary:hover { background: #ffffff; border-color: #ffffff; }
+
+    .btn-group {
+      display: inline-flex;
+      align-items: center;
+    }
+    .btn-group .btn:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .btn-group .btn:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: none;
+      padding: 0 8px;
+    }
+
+    .edge-control {
+      height: 30px;
+      padding: 0 8px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .edge-control span {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .edge-control .edge-val {
+      color: var(--text);
+      width: 26px;
+      text-align: right;
+    }
+
+    input[type="range"].slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 66px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--border);
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"].slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--text);
+      border: 2px solid var(--bg);
+      cursor: pointer;
+    }
+    input[type="range"].slider::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--text);
+      border: 2px solid var(--bg);
+      cursor: pointer;
+    }
+
+    /* Sort Dropdown */
+    .dropdown-wrap { position: relative; }
+    .dropdown-menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 6px);
+      width: 270px;
+      max-height: 75vh;
+      overflow-y: auto;
+      background: rgba(20, 22, 26, 0.98);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 6px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.72);
+      z-index: 60;
+    }
+    .sort-item {
+      width: 100%;
+      text-align: left;
+      padding: 7px 9px;
+      border-radius: 9px;
+      border: 1px solid transparent;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      transition: background 100ms, border-color 100ms;
+    }
+    .sort-item:hover { background: var(--elevated); }
+    .sort-item.selected { background: var(--elevated); border-color: var(--border-hover); }
+    .sort-item-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sort-item-desc {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ==================== WORKSPACE & DRAWERS ==================== */
+    .workspace {
+      flex: 1;
+      position: relative;
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .canvas-wrap {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
     }
 
     #graph-svg {
@@ -99,133 +283,27 @@
       height: 100%;
       display: block;
       touch-action: none;
-      user-select: none;
     }
 
-    .node-group {
-      cursor: pointer;
+    .empty-hint {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      padding: 24px;
+      z-index: 5;
     }
-    .node-group:active {
-      cursor: grabbing;
+    .empty-hint p {
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(139, 146, 161, 0.72);
+      text-align: center;
+      line-height: 1.6;
     }
 
-    .edge-hit {
-      cursor: pointer;
-    }
-
-    /* Clean monochrome range slider */
-    input[type="range"].edge-slider {
-      -webkit-appearance: none;
-      appearance: none;
-      background: #262a34;
-      height: 4px;
-      border-radius: 9999px;
-      outline: none;
-    }
-    input[type="range"].edge-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 12px;
-      height: 12px;
-      border-radius: 9999px;
-      background: #e4e6eb;
-      cursor: pointer;
-      border: 2px solid #0a0b0e;
-      transition: transform 120ms ease;
-    }
-    input[type="range"].edge-slider::-webkit-slider-thumb:hover {
-      transform: scale(1.18);
-      background: #ffffff;
-    }
-    input[type="range"].edge-slider::-moz-range-thumb {
-      width: 12px;
-      height: 12px;
-      border-radius: 9999px;
-      background: #e4e6eb;
-      cursor: pointer;
-      border: 2px solid #0a0b0e;
-    }
-  </style>
-</head>
-<body class="bg-bg text-bright select-none overflow-hidden flex flex-col h-screen w-screen">
-
-  <!-- ==================== ULTRA-CLEAN SINGLE TOP BAR ==================== -->
-  <header class="z-30 flex-shrink-0 w-full max-w-full bg-surface/95 backdrop-blur-md border-b border-border px-2.5 py-1.5 flex items-center justify-between gap-2 overflow-visible">
-    <!-- LEFT: Rank Filter Pills + (+ Rank) -->
-    <div id="rank-filter-bar" class="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 min-w-0 flex-1">
-      <!-- Populated dynamically with rank pills + "+ Rank" button -->
-    </div>
-
-    <!-- RIGHT: Sort Dropdown, Graph Lab, Edge Size Slider, Direct Save + Gear -->
-    <div class="flex items-center gap-1.5 flex-shrink-0">
-      <!-- Sort Dropdown -->
-      <div class="relative" id="sort-dropdown-wrap">
-        <button id="btn-sort" type="button"
-          class="px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-border bg-elevated text-bright hover:border-muted transition flex items-center gap-1.5 whitespace-nowrap">
-          <svg class="w-3.5 h-3.5 text-muted flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="4" y1="6" x2="20" y2="6"></line>
-            <line x1="4" y1="12" x2="14" y2="12"></line>
-            <line x1="4" y1="18" x2="9" y2="18"></line>
-          </svg>
-          <span>Sort: <span id="sort-current-label" class="font-mono text-white">Force</span></span>
-          <svg class="w-3 h-3 text-muted flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-
-        <div id="sort-menu"
-          class="hidden absolute right-0 mt-1.5 w-72 bg-surface/98 backdrop-blur-xl border border-border rounded-2xl shadow-2xl shadow-black/80 p-1.5 z-50 max-h-[75vh] overflow-y-auto">
-          <!-- Populated dynamically with 10 sort/layout options -->
-        </div>
-      </div>
-
-      <!-- Graph Lab Button -->
-      <button id="btn-graph-lab" type="button"
-        class="px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-border bg-elevated text-bright hover:border-muted transition flex items-center gap-1.5 whitespace-nowrap">
-        <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="5" cy="12" r="2.2"></circle>
-          <circle cx="19" cy="6" r="2.2"></circle>
-          <circle cx="19" cy="18" r="2.2"></circle>
-          <path d="M7 11l10-4"></path>
-          <path d="M7 13l10 4"></path>
-        </svg>
-        <span class="hidden sm:inline">Graph Lab</span>
-        <span id="lab-active-dot" class="hidden w-1.5 h-1.5 rounded-full bg-cyan-300"></span>
-      </button>
-
-      <!-- Edge Size Slider -->
-      <div class="hidden lg:flex items-center gap-1.5 px-2 py-1.5 rounded-xl border border-border bg-bg/80">
-        <span class="text-[11px] font-mono text-muted">Edge</span>
-        <input id="edge-size-slider" type="range" min="1.5" max="10" step="0.5" value="3.5"
-          class="edge-slider w-16" title="Adjust edge thickness & arrowhead size" />
-        <span id="edge-size-value" class="text-[11px] font-mono text-bright w-7 text-right">3.5</span>
-      </div>
-
-      <!-- Direct Save Button + Gear Icon -->
-      <div class="flex items-center flex-shrink-0">
-        <button id="btn-save" type="button" title="Save directly to GitHub repo (data.json)"
-          class="px-2.5 py-1.5 rounded-l-xl text-xs font-semibold bg-bright text-bg hover:bg-white transition flex items-center gap-1.5 whitespace-nowrap border border-bright">
-          <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-            <polyline points="17 21 17 13 7 13 7 21"></polyline>
-            <polyline points="7 3 7 8 15 8"></polyline>
-          </svg>
-          <span id="save-label">Save</span>
-        </button>
-        <button id="btn-save-settings" type="button" title="GitHub Repository Settings"
-          class="px-2 py-1.5 rounded-r-xl border border-l-0 border-border bg-elevated text-muted hover:text-bright hover:border-muted transition flex items-center justify-center">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- ==================== MAIN WORKSPACE ==================== -->
-  <div class="relative flex-1 w-full overflow-hidden flex">
-
-    <!-- LEFT DRAWER: GRAPH LAB (Graph Theory Structural Analysis) -->
-    <aside id="graph-lab-drawer"
-      class
+    .action-banner {
+      position: absolute;
+      top: 12px;
