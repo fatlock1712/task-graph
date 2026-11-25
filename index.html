@@ -307,3 +307,3128 @@
     .action-banner {
       position: absolute;
       top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 25;
+      background: rgba(20, 22, 26, 0.96);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+      max-width: 92vw;
+    }
+    .action-banner span {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Drawers */
+    .drawer {
+      width: 310px;
+      max-width: 90vw;
+      height: 100%;
+      background: rgba(20, 22, 26, 0.97);
+      display: flex;
+      flex-direction: column;
+      z-index: 28;
+      flex-shrink: 0;
+    }
+    .drawer-left { border-right: 1px solid var(--border); }
+    .drawer-right { border-left: 1px solid var(--border); }
+
+    .drawer-header {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .drawer-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .drawer-footer {
+      padding: 10px 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+    .icon-btn:hover { color: var(--text); background: var(--elevated); border-color: var(--border); }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    .metric-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .metric-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 7px 9px;
+    }
+    .metric-k {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .metric-v {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 2px;
+    }
+
+    .overlay-btn {
+      width: 100%;
+      text-align: left;
+      padding: 7px 10px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 5px;
+      transition: border-color 120ms, background 120ms;
+    }
+    .overlay-btn:hover { border-color: var(--border-hover); background: var(--elevated); }
+    .overlay-btn.active { border-color: var(--text); background: var(--elevated); }
+    .overlay-btn .ov-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .overlay-btn .ov-desc {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .prune-box {
+      background: rgba(251, 191, 36, 0.08);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .prune-box p { margin: 0; font-size: 11px; color: #fde68a; line-height: 1.45; }
+
+    .field-input, .field-textarea, .field-select {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 8px 10px;
+      font-size: 12px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 120ms;
+    }
+    .field-input:focus, .field-textarea:focus, .field-select:focus {
+      border-color: var(--text);
+    }
+    .field-textarea { resize: vertical; min-height: 70px; line-height: 1.5; }
+
+    .rank-picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .rank-choice {
+      min-width: 30px;
+      height: 26px;
+      padding: 0 8px;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .rank-choice:hover { border-color: var(--border-hover); color: var(--text); }
+    .rank-choice.selected { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+    .neighbor-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      font-size: 12px;
+    }
+    .neighbor-main {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+      flex: 1;
+      cursor: pointer;
+    }
+    .neighbor-badge {
+      min-width: 20px;
+      height: 20px;
+      padding: 0 5px;
+      border-radius: 999px;
+      border: 1px solid var(--border-hover);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .neighbor-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .neighbor-title.done { text-decoration: line-through; color: var(--dim); }
+
+    .mini-btn {
+      padding: 2px 7px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--elevated);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+    .mini-btn:hover { color: var(--text); border-color: var(--border-hover); }
+
+    /* ==================== FLOATING POPOVER & MODALS ==================== */
+    .popover {
+      position: fixed;
+      z-index: 50;
+      width: 280px;
+      background: rgba(20, 22, 26, 0.98);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.78);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: rgba(0, 0, 0, 0.68);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .rank-manage-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 80;
+      background: var(--elevated);
+      border: 1px solid var(--border-hover);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+      transition: opacity 160ms ease, transform 160ms ease;
+      max-width: 90vw;
+      text-align: center;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .hidden { display: none !important; }
+    .dot-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      display: inline-block;
+    }
+
+    .mobile-edge-row { display: none; }
+
+    @media (max-width: 860px) {
+      .edge-control { display: none; }
+      .mobile-edge-row { display: flex; }
+      .drawer {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+      }
+      .drawer-left { left: 0; }
+      .drawer-right { right: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== SINGLE COMPACT TOP BAR (48px) ==================== -->
+  <header class="topbar">
+    <div id="rank-filter-bar" class="rank-bar no-scrollbar"></div>
+
+    <div class="topbar-right">
+      <!-- Sort Dropdown -->
+      <div class="dropdown-wrap" id="sort-dropdown-wrap">
+        <button id="btn-sort" class="btn" type="button">
+          <span>Sort: <span id="sort-current-label" style="font-family:var(--mono);color:#fff;">Force</span> &#9662;</span>
+        </button>
+        <div id="sort-menu" class="dropdown-menu hidden"></div>
+      </div>
+
+      <!-- Graph Lab Toggle -->
+      <button id="btn-graph-lab" class="btn" type="button">
+        <span>Graph Lab</span>
+        <span id="lab-dot" class="dot-indicator hidden"></span>
+      </button>
+
+      <!-- Edge Size Slider -->
+      <div class="edge-control" title="Adjust edge thickness & arrowhead size">
+        <span>Edge</span>
+        <input id="edge-slider" class="slider" type="range" min="1.5" max="10" step="0.5" value="3.5" />
+        <span id="edge-val" class="edge-val">3.5</span>
+      </div>
+
+      <!-- Save + Settings Gear -->
+      <div class="btn-group">
+        <button id="btn-save" class="btn btn-primary" type="button" title="Commit graph directly to GitHub data.json">
+          <span id="save-label">Save</span>
+        </button>
+        <button id="btn-gh-settings" class="btn" type="button" title="GitHub Sync Settings">&#9881;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== WORKSPACE ==================== -->
+  <div class="workspace">
+
+    <!-- LEFT DRAWER: GRAPH LAB -->
+    <aside id="graph-lab-drawer" class="drawer drawer-left hidden">
+      <div class="drawer-header">
+        <div class="drawer-title">Graph Lab</div>
+        <button id="lab-close" class="icon-btn" type="button" title="Close">&#10005;</button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- Mobile Edge Slider -->
+        <div class="mobile-edge-row" style="align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);">
+          <span style="font-family:var(--mono);font-size:11px;color:var(--muted);">Edge Size</span>
+          <input id="edge-slider-mobile" class="slider" style="width:120px;" type="range" min="1.5" max="10" step="0.5" value="3.5" />
+          <span id="edge-val-mobile" style="font-family:var(--mono);font-size:11px;width:34px;text-align:right;">3.5px</span>
+        </div>
+
+        <!-- Global Invariants -->
+        <div>
+          <div class="section-label"><span>Global Invariants</span></div>
+          <div class="metric-grid">
+            <div class="metric-card"><div class="metric-k">Nodes / Edges</div><div id="inv-counts" class="metric-v">0 / 0</div></div>
+            <div class="metric-card"><div class="metric-k">Components</div><div id="inv-comp" class="metric-v">0</div></div>
+            <div class="metric-card"><div class="metric-k">Density</div><div id="inv-density" class="metric-v">0.000</div></div>
+            <div class="metric-card"><div class="metric-k">Structure</div><div id="inv-dag" class="metric-v">Empty</div></div>
+            <div class="metric-card"><div class="metric-k">Longest Path</div><div id="inv-longest" class="metric-v">0</div></div>
+            <div class="metric-card" title="Second smallest eigenvalue of undirected Laplacian L = D - A"><div class="metric-k">Algebraic &lambda;&#8322;</div><div id="inv-lambda2" class="metric-v">0.000</div></div>
+            <div class="metric-card" style="grid-column:span 2;" title="Largest eigenvalue magnitude of directed adjacency matrix A"><div class="metric-k">Spectral Radius &rho;(A)</div><div id="inv-rho" class="metric-v">0.000</div></div>
+          </div>
+        </div>
+
+        <!-- Visual Overlays -->
+        <div>
+          <div class="section-label">
+            <span>Visual Overlays</span>
+            <button id="lab-reset-overlay" type="button" style="background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:10px;text-decoration:underline;">Normal</button>
+          </div>
+          <div id="lab-overlay-list"></div>
+        </div>
+
+        <!-- Prune Redundant Edges Box -->
+        <div id="lab-prune-box" class="prune-box hidden">
+          <p id="lab-prune-text"></p>
+          <button id="btn-prune" class="btn btn-primary" type="button" style="justify-content:center;width:100%;">Prune Redundant Edges</button>
+        </div>
+
+        <!-- Top Nodes List -->
+        <div id="lab-top-section" class="hidden">
+          <div class="section-label"><span id="lab-top-title">Top Nodes</span></div>
+          <div id="lab-top-list" style="display:flex;flex-direction:column;gap:5px;"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER: PURE SVG GRAPH CANVAS -->
+    <div id="canvas-wrap" class="canvas-wrap">
+      <svg id="graph-svg">
+        <defs>
+          <pattern id="dot-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+            <circle cx="1.5" cy="1.5" r="1.05" fill="#1d2028"></circle>
+          </pattern>
+
+          <marker id="arrow-default" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M 1 1.4 L 9.2 5 L 1 8.6 L 2.8 5 Z" fill="#8b94a5"></path>
+          </marker>
+          <marker id="arrow-done" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M 1 1.4 L 9.2 5 L 1 8.6 L 2.8 5 Z" fill="#3a404f"></path>
+          </marker>
+          <marker id="arrow-white" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="15" markerHeight="15" markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M 1 1.4 L 9.2 5 L 1 8.6 L 2.8 5 Z" fill="#ffffff"></path>
+          </marker>
+          <marker id="arrow-cyan" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="15" markerHeight="15" markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M 1 1.4 L 9.2 5 L 1 8.6 L 2.8 5 Z" fill="#67e8f9"></path>
+          </marker>
+          <marker id="arrow-amber" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="15" markerHeight="15" markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M 1 1.4 L 9.2 5 L 1 8.6 L 2.8 5 Z" fill="#fbbf24"></path>
+          </marker>
+          <marker id="arrow-red" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="15" markerHeight="15" markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M 1 1.4 L 9.2 5 L 1 8.6 L 2.8 5 Z" fill="#f87171"></path>
+          </marker>
+        </defs>
+
+        <rect id="bg-rect" width="100%" height="100%" fill="url(#dot-grid)"></rect>
+
+        <g id="viewport">
+          <g id="guides-layer" pointer-events="none"></g>
+          <g id="edges-layer"></g>
+          <g id="preview-layer" pointer-events="none">
+            <line id="connect-preview" class="hidden" stroke="#ffffff" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arrow-white)"></line>
+          </g>
+          <g id="nodes-layer"></g>
+        </g>
+      </svg>
+
+      <!-- Centered Empty Hint -->
+      <div id="empty-hint" class="empty-hint hidden">
+        <p>Double-click anywhere to add a node &middot; Shift+Drag (or Right-Drag) between nodes to connect &middot; Press E for Connect Mode</p>
+      </div>
+
+      <!-- Subtle Floating Action Banner (Edge Delete / Connect Mode) -->
+      <div id="action-banner" class="action-banner hidden">
+        <span id="action-banner-text"></span>
+        <button id="action-banner-delete" class="btn btn-primary hidden" type="button" style="height:24px;padding:0 9px;font-size:11px;">Delete Edge</button>
+        <button id="action-banner-cancel" class="icon-btn" type="button" title="Cancel (Esc)">&#10005;</button>
+      </div>
+
+      <!-- Floating Compact Add-Node Popup -->
+      <div id="add-popover" class="popover hidden">
+        <form id="add-popover-form" style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);">New Node</span>
+            <button id="add-popover-close" class="icon-btn" type="button">&#10005;</button>
+          </div>
+          <input id="pop-title" class="field-input" type="text" required placeholder="Type node title..." />
+          <div>
+            <div class="section-label"><span>Rank</span></div>
+            <div id="pop-rank-row" class="rank-picker"></div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:6px;">
+            <button id="add-popover-cancel" class="btn" type="button" style="height:28px;">Cancel</button>
+            <button class="btn btn-primary" type="submit" style="height:28px;">Add &#8629;</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- RIGHT DRAWER: NODE INSPECTOR -->
+    <aside id="inspector" class="drawer drawer-right hidden">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <span id="insp-badge" class="neighbor-badge" style="width:24px;height:24px;font-size:11px;"></span>
+          <span>Inspector</span>
+        </div>
+        <button id="insp-close" class="icon-btn" type="button" title="Close (Esc)">&#10005;</button>
+      </div>
+
+      <div class="drawer-body">
+        <button id="insp-done-btn" class="btn" type="button" style="width:100%;height:36px;justify-content:space-between;">
+          <span id="insp-done-label">Mark as Done</span>
+          <span style="font-family:var(--mono);font-size:10px;opacity:0.65;">[D]</span>
+        </button>
+
+        <div>
+          <div class="section-label"><span>Title</span></div>
+          <input id="insp-title" class="field-input" type="text" />
+        </div>
+
+        <div>
+          <div class="section-label">
+            <span>Rank</span>
+            <button id="insp-manage-ranks" type="button" style="background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:10px;text-decoration:underline;">Manage</button>
+          </div>
+          <div id="insp-rank-row" class="rank-picker"></div>
+        </div>
+
+        <div>
+          <div class="section-label"><span>Notes</span></div>
+          <textarea id="insp-notes" class="field-textarea" placeholder="Add notes, links, or milestones..."></textarea>
+        </div>
+
+        <div>
+          <div class="section-label"><span>Metrics</span></div>
+          <div class="metric-grid-3">
+            <div class="metric-card"><div class="metric-k">PageRank</div><div id="insp-m-pr" class="metric-v" style="font-size:11px;">0.000</div></div>
+            <div class="metric-card"><div class="metric-k">Between.</div><div id="insp-m-bt" class="metric-v" style="font-size:11px;">0.000</div></div>
+            <div class="metric-card"><div class="metric-k">Hub</div><div id="insp-m-hub" class="metric-v" style="font-size:11px;">0.000</div></div>
+            <div class="metric-card"><div class="metric-k">Auth</div><div id="insp-m-auth" class="metric-v" style="font-size:11px;">0.000</div></div>
+            <div class="metric-card"><div class="metric-k">Active In</div><div id="insp-m-in" class="metric-v" style="font-size:11px;">0</div></div>
+            <div class="metric-card"><div class="metric-k">Out Deg</div><div id="insp-m-out" class="metric-v" style="font-size:11px;">0</div></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">
+            <span id="insp-in-label">Active Fed By: 0</span>
+            <span id="insp-radius-pill">r=17px</span>
+          </div>
+          <div id="insp-in-list" style="display:flex;flex-direction:column;gap:5px;"></div>
+        </div>
+
+        <div>
+          <div class="section-label"><span id="insp-out-label">Unlocks: 0</span></div>
+          <div id="insp-out-list" style="display:flex;flex-direction:column;gap:5px;"></div>
+        </div>
+      </div>
+
+      <div class="drawer-footer">
+        <button id="insp-connect-btn" class="btn" type="button" style="flex:1;justify-content:center;">Draw Edge From Here</button>
+        <button id="insp-delete-btn" class="btn" type="button" title="Delete Node" style="color:var(--accent-red);border-color:rgba(248,113,113,0.35);">Delete</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ==================== MANAGE RANKS MODAL ==================== -->
+  <div id="ranks-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:14px;font-weight:700;">Manage Ranks</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Add custom ranks, reorder priority, or remove ranks.</div>
+        </div>
+        <button id="ranks-close" class="icon-btn" type="button">&#10005;</button>
+      </div>
+
+      <form id="add-rank-form" style="display:flex;gap:6px;">
+        <input id="new-rank-input" class="field-input" style="flex:1;font-family:var(--mono);" maxlength="6" required placeholder="e.g. 4, S, P1" />
+        <button class="btn btn-primary" type="submit">+ Add</button>
+      </form>
+
+      <div id="ranks-manage-list" style="max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;"></div>
+
+      <div style="display:flex;justify-content:flex-end;">
+        <button id="ranks-done" class="btn" type="button">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== GITHUB SETTINGS MODAL ==================== -->
+  <div id="gh-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:14px;font-weight:700;">GitHub Direct Save</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Commits graph JSON directly to your repo via GitHub API.</div>
+        </div>
+        <button id="gh-close" class="icon-btn" type="button">&#10005;</button>
+      </div>
+
+      <form id="gh-form" style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div>
+            <div class="section-label"><span>Owner</span></div>
+            <input id="gh-owner" class="field-input" style="font-family:var(--mono);" required placeholder="fatlock1712" />
+          </div>
+          <div>
+            <div class="section-label"><span>Repo</span></div>
+            <input id="gh-repo" class="field-input" style="font-family:var(--mono);" required placeholder="task-graph" />
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div>
+            <div class="section-label"><span>Branch</span></div>
+            <input id="gh-branch" class="field-input" style="font-family:var(--mono);" required placeholder="main" />
+          </div>
+          <div>
+            <div class="section-label"><span>File Path</span></div>
+            <input id="gh-path" class="field-input" style="font-family:var(--mono);" required placeholder="data.json" />
+          </div>
+        </div>
+        <div>
+          <div class="section-label"><span>Personal Access Token (Contents: Read &amp; Write)</span></div>
+          <input id="gh-token" class="field-input" style="font-family:var(--mono);" type="password" required placeholder="github_pat_... or ghp_..." />
+        </div>
+        <div id="gh-status" class="hidden" style="font-family:var(--mono);font-size:11px;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--muted);"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2px;">
+          <button id="gh-clear" class="btn" type="button" style="color:var(--muted);">Clear Token</button>
+          <button id="gh-submit" class="btn btn-primary" type="submit">Save &amp; Commit Now</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const SVG_NS = 'http://www.w3.org/2000/svg';
+      const DATA_KEY = 'living_graph_v3';
+      const GH_KEY = 'living_graph_v3_github';
+      const DEFAULT_RANKS = ['0', '1', '2', '3', '∞', 'X'];
+
+      const SORT_OPTIONS = [
+        { id: 'force', label: 'Force', desc: 'Organic force-directed physics' },
+        { id: 'rank', label: 'By Rank', desc: 'Columns ordered by custom rank' },
+        { id: 'inDegree', label: 'By Active In-Degree', desc: 'Biggest hubs fed by active nodes first' },
+        { id: 'outDegree', label: 'By Out-Degree', desc: 'Highest leverage feeders first' },
+        { id: 'status', label: 'By Status', desc: 'Active tasks vs Done archive' },
+        { id: 'topo', label: 'Topological Order', desc: 'Left-to-right dependency layers' },
+        { id: 'pagerank', label: 'By PageRank', desc: 'Ordered by recursive importance' },
+        { id: 'betweenness', label: 'By Betweenness', desc: 'Ordered by bottleneck centrality' },
+        { id: 'components', label: 'By Components', desc: 'Grouped into connected clusters' },
+        { id: 'radial', label: 'Radial', desc: 'Concentric rings by rank priority' }
+      ];
+
+      const OVERLAY_OPTIONS = [
+        { id: 'none', name: 'None (Normal)', desc: 'Clean monochrome graph view' },
+        { id: 'pagerank', name: 'PageRank', desc: 'Recursive structural importance (d = 0.85)' },
+        { id: 'hits', name: 'HITS (Hubs & Auth)', desc: 'Cyan = Authorities, White = Hubs' },
+        { id: 'betweenness', name: 'Brandes Betweenness', desc: 'Highlights structural bottlenecks' },
+        { id: 'critical', name: 'Critical Path', desc: 'Longest active dependency chain' },
+        { id: 'cycles', name: 'Tarjan Cycle Detector', desc: 'Highlights strongly connected loops' },
+        { id: 'fiedler', name: 'Spectral Fiedler Split', desc: 'v₂ eigenvector bipartition (Cluster A vs B)' },
+        { id: 'transitive', name: 'Transitive Reduction', desc: 'Detects redundant shortcut edges' },
+        { id: 'isolated', name: 'Isolated Nodes', desc: 'Highlights degree-0 disconnected nodes' }
+      ];
+
+      function showToast(msg, duration = 2600) {
+        const el = document.getElementById('toast');
+        if (!el) return;
+        el.textContent = msg;
+        el.classList.add('show');
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(() => el.classList.remove('show'), duration);
+      }
+
+      function initApp() {
+        // =====================================================================
+        // 1. STATE & DOM REFERENCES
+        // =====================================================================
+        const state = {
+          ranks: [...DEFAULT_RANKS],
+          hiddenRanks: new Set(),
+          nodes: [],
+          edges: [],
+          sortMode: 'force',
+          overlay: 'none',
+          edgeWidth: 3.5,
+          view: { x: 0, y: 0, k: 1 },
+          selectedNodeId: null,
+          selectedEdgeId: null,
+          connectMode: false,
+          connectSourceId: null,
+          popRank: '1',
+          popWorldPos: { x: 0, y: 0 },
+          updatedAt: null,
+          gh: { owner: 'fatlock1712', repo: 'task-graph', branch: 'main', path: 'data.json', token: '' }
+        };
+
+        // Cached computed graph analysis
+        let analysis = createEmptyAnalysis();
+        let layoutGuides = [];
+
+        // SVG DOM lookup maps
+        const nodeEls = new Map();
+        const edgeEls = new Map();
+
+        // Interaction state
+        let interaction = {
+          type: null, // 'pan' | 'dragNode' | 'dragEdge'
+          nodeId: null,
+          startScreenX: 0,
+          startScreenY: 0,
+          startViewX: 0,
+          startViewY: 0,
+          dragMoved: false,
+          sourceNodeId: null
+        };
+
+        // DOM Elements
+        const svg = document.getElementById('graph-svg');
+        const bgRect = document.getElementById('bg-rect');
+        const viewport = document.getElementById('viewport');
+        const guidesLayer = document.getElementById('guides-layer');
+        const edgesLayer = document.getElementById('edges-layer');
+        const nodesLayer = document.getElementById('nodes-layer');
+        const connectPreview = document.getElementById('connect-preview');
+        const emptyHint = document.getElementById('empty-hint');
+
+        const rankFilterBar = document.getElementById('rank-filter-bar');
+        const btnSort = document.getElementById('btn-sort');
+        const sortCurrentLabel = document.getElementById('sort-current-label');
+        const sortMenu = document.getElementById('sort-menu');
+
+        const btnGraphLab = document.getElementById('btn-graph-lab');
+        const labDot = document.getElementById('lab-dot');
+        const graphLabDrawer = document.getElementById('graph-lab-drawer');
+        const labClose = document.getElementById('lab-close');
+        const labOverlayList = document.getElementById('lab-overlay-list');
+        const labResetOverlay = document.getElementById('lab-reset-overlay');
+        const labPruneBox = document.getElementById('lab-prune-box');
+        const labPruneText = document.getElementById('lab-prune-text');
+        const btnPrune = document.getElementById('btn-prune');
+        const labTopSection = document.getElementById('lab-top-section');
+        const labTopTitle = document.getElementById('lab-top-title');
+        const labTopList = document.getElementById('lab-top-list');
+
+        const edgeSlider = document.getElementById('edge-slider');
+        const edgeVal = document.getElementById('edge-val');
+        const edgeSliderMobile = document.getElementById('edge-slider-mobile');
+        const edgeValMobile = document.getElementById('edge-val-mobile');
+
+        const btnSave = document.getElementById('btn-save');
+        const saveLabel = document.getElementById('save-label');
+        const btnGhSettings = document.getElementById('btn-gh-settings');
+
+        const actionBanner = document.getElementById('action-banner');
+        const actionBannerText = document.getElementById('action-banner-text');
+        const actionBannerDelete = document.getElementById('action-banner-delete');
+        const actionBannerCancel = document.getElementById('action-banner-cancel');
+
+        const addPopover = document.getElementById('add-popover');
+        const addPopoverForm = document.getElementById('add-popover-form');
+        const addPopoverClose = document.getElementById('add-popover-close');
+        const addPopoverCancel = document.getElementById('add-popover-cancel');
+        const popTitle = document.getElementById('pop-title');
+        const popRankRow = document.getElementById('pop-rank-row');
+
+        const inspector = document.getElementById('inspector');
+        const inspClose = document.getElementById('insp-close');
+        const inspBadge = document.getElementById('insp-badge');
+        const inspDoneBtn = document.getElementById('insp-done-btn');
+        const inspDoneLabel = document.getElementById('insp-done-label');
+        const inspTitle = document.getElementById('insp-title');
+        const inspRankRow = document.getElementById('insp-rank-row');
+        const inspManageRanks = document.getElementById('insp-manage-ranks');
+        const inspNotes = document.getElementById('insp-notes');
+        const inspInLabel = document.getElementById('insp-in-label');
+        const inspRadiusPill = document.getElementById('insp-radius-pill');
+        const inspInList = document.getElementById('insp-in-list');
+        const inspOutLabel = document.getElementById('insp-out-label');
+        const inspOutList = document.getElementById('insp-out-list');
+        const inspConnectBtn = document.getElementById('insp-connect-btn');
+        const inspDeleteBtn = document.getElementById('insp-delete-btn');
+
+        const ranksModal = document.getElementById('ranks-modal');
+        const ranksClose = document.getElementById('ranks-close');
+        const ranksDone = document.getElementById('ranks-done');
+        const addRankForm = document.getElementById('add-rank-form');
+        const newRankInput = document.getElementById('new-rank-input');
+        const ranksManageList = document.getElementById('ranks-manage-list');
+
+        const ghModal = document.getElementById('gh-modal');
+        const ghClose = document.getElementById('gh-close');
+        const ghForm = document.getElementById('gh-form');
+        const ghOwner = document.getElementById('gh-owner');
+        const ghRepo = document.getElementById('gh-repo');
+        const ghBranch = document.getElementById('gh-branch');
+        const ghPath = document.getElementById('gh-path');
+        const ghToken = document.getElementById('gh-token');
+        const ghStatus = document.getElementById('gh-status');
+        const ghClear = document.getElementById('gh-clear');
+        const ghSubmit = document.getElementById('gh-submit');
+
+        // =====================================================================
+        // 2. UTILITY HELPERS
+        // =====================================================================
+        function svgEl(tag, attrs = {}) {
+          const el = document.createElementNS(SVG_NS, tag);
+          for (const [k, v] of Object.entries(attrs)) {
+            el.setAttribute(k, v);
+          }
+          return el;
+        }
+
+        function uid(prefix) {
+          return `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`;
+        }
+
+        function getSvgRect() {
+          return svg.getBoundingClientRect();
+        }
+
+        function screenToWorld(clientX, clientY) {
+          const rect = getSvgRect();
+          return {
+            x: (clientX - rect.left - state.view.x) / state.view.k,
+            y: (clientY - rect.top - state.view.y) / state.view.k
+          };
+        }
+
+        function applyViewportTransform() {
+          viewport.setAttribute('transform', `translate(${state.view.x}, ${state.view.y}) scale(${state.view.k})`);
+        }
+
+        function centerViewport() {
+          const rect = getSvgRect();
+          state.view.x = rect.width / 2;
+          state.view.y = rect.height / 2;
+          state.view.k = 1;
+          applyViewportTransform();
+        }
+
+        function getNodeById(id) {
+          return state.nodes.find(n => n.id === id) || null;
+        }
+
+        function isNodeVisible(node) {
+          return !state.hiddenRanks.has(node.rank);
+        }
+
+        function getVisibleNodes() {
+          return state.nodes.filter(isNodeVisible);
+        }
+
+        function getVisibleEdges() {
+          const visIds = new Set(getVisibleNodes().map(n => n.id));
+          return state.edges.filter(e => visIds.has(e.source) && visIds.has(e.target));
+        }
+
+        function radiusForActiveInDegree(k) {
+          if (k <= 0) return 17;
+          return Math.min(88, Math.round(17 + 12 * Math.pow(k, 1.35)));
+        }
+
+        function recomputeNodeTargetRadii() {
+          const activeInCount = new Map();
+          for (const n of state.nodes) activeInCount.set(n.id, 0);
+
+          const nodeMap = new Map(state.nodes.map(n => [n.id, n]));
+          for (const e of state.edges) {
+            const src = nodeMap.get(e.source);
+            const tgt = nodeMap.get(e.target);
+            if (src && tgt && !src.done) {
+              activeInCount.set(tgt.id, (activeInCount.get(tgt.id) || 0) + 1);
+            }
+          }
+
+          for (const n of state.nodes) {
+            n.activeIn = activeInCount.get(n.id) || 0;
+            n.targetR = radiusForActiveInDegree(n.activeIn);
+            if (typeof n.displayR !== 'number' || Number.isNaN(n.displayR)) {
+              n.displayR = n.targetR;
+            }
+          }
+        }
+
+        // =====================================================================
+        // 3. PERSISTENCE (localStorage + GitHub Contents API)
+        // =====================================================================
+        function detectGithubPagesRepo() {
+          const host = window.location.hostname || '';
+          const pathParts = (window.location.pathname || '').split('/').filter(Boolean);
+          if (host.endsWith('.github.io')) {
+            const owner = host.replace('.github.io', '');
+            const repo = pathParts[0] || `${owner}.github.io`;
+            return { owner, repo };
+          }
+          return { owner: 'fatlock1712', repo: 'task-graph' };
+        }
+
+        function loadGithubConfig() {
+          const detected = detectGithubPagesRepo();
+          state.gh.owner = detected.owner;
+          state.gh.repo = detected.repo;
+          try {
+            const raw = localStorage.getItem(GH_KEY);
+            if (raw) {
+              const saved = JSON.parse(raw);
+              if (saved.owner) state.gh.owner = saved.owner;
+              if (saved.repo) state.gh.repo = saved.repo;
+              if (saved.branch) state.gh.branch = saved.branch;
+              if (saved.path) state.gh.path = saved.path;
+              if (saved.token) state.gh.token = saved.token;
+            }
+          } catch (_) {}
+        }
+
+        function saveGithubConfig() {
+          try {
+            localStorage.setItem(GH_KEY, JSON.stringify(state.gh));
+          } catch (_) {}
+        }
+
+        function serializeGraph() {
+          state.updatedAt = new Date().toISOString();
+          return {
+            version: 3,
+            updatedAt: state.updatedAt,
+            ranks: state.ranks,
+            edgeWidth: state.edgeWidth,
+            nodes: state.nodes.map(n => ({
+              id: n.id,
+              title: n.title,
+              rank: n.rank,
+              notes: n.notes || '',
+              done: !!n.done,
+              x: Math.round(n.x * 10) / 10,
+              y: Math.round(n.y * 10) / 10
+            })),
+            edges: state.edges.map(e => ({
+              id: e.id,
+              source: e.source,
+              target: e.target
+            }))
+          };
+        }
+
+        function saveLocal() {
+          try {
+            localStorage.setItem(DATA_KEY, JSON.stringify(serializeGraph()));
+          } catch (_) {}
+        }
+
+        function hydrateGraph(data) {
+          if (!data || typeof data !== 'object') return;
+          if (Array.isArray(data.ranks) && data.ranks.length > 0) {
+            state.ranks = [...new Set(data.ranks.map(String))];
+          }
+          if (typeof data.edgeWidth === 'number') {
+            state.edgeWidth = Math.max(1.5, Math.min(10, data.edgeWidth));
+          }
+          if (Array.isArray(data.nodes)) {
+            state.nodes = data.nodes.map(n => ({
+              id: String(n.id || uid('n')),
+              title: String(n.title || 'Untitled'),
+              rank: String(n.rank ?? state.ranks[0] ?? '1'),
+              notes: String(n.notes || ''),
+              done: !!n.done,
+              x: typeof n.x === 'number' ? n.x : (Math.random() - 0.5) * 160,
+              y: typeof n.y === 'number' ? n.y : (Math.random() - 0.5) * 160,
+              vx: 0,
+              vy: 0,
+              targetR: 17,
+              displayR: 17,
+              tx: 0,
+              ty: 0
+            }));
+          }
+          if (Array.isArray(data.edges)) {
+            const validIds = new Set(state.nodes.map(n => n.id));
+            state.edges = data.edges
+              .filter(e => validIds.has(String(e.source)) && validIds.has(String(e.target)) && e.source !== e.target)
+              .map(e => ({
+                id: String(e.id || uid('e')),
+                source: String(e.source),
+                target: String(e.target)
+              }));
+          }
+          state.updatedAt = data.updatedAt || null;
+        }
+
+        function toBase64Utf8(str) {
+          const bytes = new TextEncoder().encode(str);
+          let bin = '';
+          for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+          return btoa(bin);
+        }
+
+        async function commitToGithub() {
+          saveLocal();
+          if (!state.gh.token || !state.gh.owner || !state.gh.repo) {
+            openGithubModal();
+            return;
+          }
+
+          saveLabel.textContent = 'Saving...';
+          btnSave.disabled = true;
+
+          const owner = encodeURIComponent(state.gh.owner.trim());
+          const repo = encodeURIComponent(state.gh.repo.trim());
+          const path = state.gh.path.trim().replace(/^\/+/, '') || 'data.json';
+          const branch = state.gh.branch.trim() || 'main';
+          const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+          const headers = {
+            'Authorization': `Bearer ${state.gh.token.trim()}`,
+            'Accept': 'application/vnd.github+json',
+            'Content-Type': 'application/json'
+          };
+
+          try {
+            // 1. Check existing file SHA
+            let sha = undefined;
+            const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(branch)}`, { headers });
+            if (getRes.ok) {
+              const meta = await getRes.json();
+              sha = meta.sha;
+            } else if (getRes.status !== 404) {
+              const errData = await getRes.json().catch(() => ({}));
+              throw new Error(errData.message || `GitHub GET failed (${getRes.status})`);
+            }
+
+            // 2. PUT updated data.json
+            const content = JSON.stringify(serializeGraph(), null, 2);
+            const body = {
+              message: `Update Living Graph (${new Date().toISOString().slice(0, 16).replace('T', ' ')})`,
+              content: toBase64Utf8(content),
+              branch
+            };
+            if (sha) body.sha = sha;
+
+            const putRes = await fetch(apiUrl, {
+              method: 'PUT',
+              headers,
+              body: JSON.stringify(body)
+            });
+
+            if (!putRes.ok) {
+              const errData = await putRes.json().catch(() => ({}));
+              throw new Error(errData.message || `GitHub PUT failed (${putRes.status})`);
+            }
+
+            saveLabel.textContent = 'Saved ✓';
+            showToast(`Committed to ${state.gh.owner}/${state.gh.repo}/${path}`);
+            setTimeout(() => { saveLabel.textContent = 'Save'; }, 1800);
+          } catch (err) {
+            saveLabel.textContent = 'Save';
+            showToast(`GitHub Error: ${err.message}`, 4200);
+            if (!ghModal.classList.contains('hidden')) {
+              ghStatus.textContent = `Error: ${err.message}`;
+              ghStatus.classList.remove('hidden');
+            }
+          } finally {
+            btnSave.disabled = false;
+          }
+        }
+
+        // =====================================================================
+        // 4. GRAPH LAB — PURE JS GRAPH THEORY ENGINE
+        // =====================================================================
+        function createEmptyAnalysis() {
+          return {
+            n: 0,
+            m: 0,
+            components: 0,
+            componentMap: new Map(),
+            density: 0,
+            isDAG: true,
+            longestPathLen: 0,
+            lambda2: 0,
+            rho: 0,
+            pagerank: new Map(),
+            hubs: new Map(),
+            authorities: new Map(),
+            betweenness: new Map(),
+            criticalNodes: new Set(),
+            criticalEdges: new Set(),
+            cycleNodes: new Set(),
+            cycleEdges: new Set(),
+            fiedlerGroup: new Map(),
+            fiedlerValues: new Map(),
+            redundantEdges: new Set(),
+            isolatedNodes: new Set(),
+            topoLayer: new Map()
+          };
+        }
+
+        // Symmetric Jacobi eigenvalue solver for exact Algebraic Connectivity (lambda_2) & Fiedler vector
+        function jacobiEigenSymmetric(matrix, maxIter = 80) {
+          const n = matrix.length;
+          if (n === 0) return { values: [], vectors: [] };
+          const A = matrix.map(row => row.slice());
+          const V = Array.from({ length: n }, (_, i) => {
+            const row = new Array(n).fill(0);
+            row[i] = 1;
+            return row;
+          });
+
+          for (let iter = 0; iter < maxIter * n; iter++) {
+            let p = 0, q = 1, maxOff = 0;
+            for (let i = 0; i < n; i++) {
+              for (let j = i + 1; j < n; j++) {
+                const v = Math.abs(A[i][j]);
+                if (v > maxOff) {
+                  maxOff = v;
+                  p = i;
+                  q = j;
+                }
+              }
+            }
+            if (maxOff < 1e-8) break;
+
+            const app = A[p][p], aqq = A[q][q], apq = A[p][q];
+            const phi = 0.5 * Math.atan2(2 * apq, aqq - app);
+            const c = Math.cos(phi), s = Math.sin(phi);
+
+            for (let i = 0; i < n; i++) {
+              if (i !== p && i !== q) {
+                const aip = A[i][p], aiq = A[i][q];
+                A[i][p] = A[p][i] = c * aip - s * aiq;
+                A[i][q] = A[q][i] = s * aip + c * aiq;
+              }
+            }
+            A[p][p] = c * c * app - 2 * s * c * apq + s * s * aqq;
+            A[q][q] = s * s * app + 2 * s * c * apq + c * c * aqq;
+            A[p][q] = A[q][p] = 0;
+
+            for (let i = 0; i < n; i++) {
+              const vip = V[i][p], viq = V[i][q];
+              V[i][p] = c * vip - s * viq;
+              V[i][q] = s * vip + c * viq;
+            }
+          }
+
+          const pairs = [];
+          for (let i = 0; i < n; i++) {
+            const vec = new Array(n);
+            for (let r = 0; r < n; r++) vec[r] = V[r][i];
+            pairs.push({ val: A[i][i], vec });
+          }
+          pairs.sort((a, b) => a.val - b.val);
+          return {
+            values: pairs.map(p => p.val),
+            vectors: pairs.map(p => p.vec)
+          };
+        }
+
+        function analyzeGraph() {
+          const res = createEmptyAnalysis();
+          const nodes = getVisibleNodes();
+          const edges = getVisibleEdges();
+          const n = nodes.length;
+          const m = edges.length;
+          res.n = n;
+          res.m = m;
+
+          if (n === 0) {
+            analysis = res;
+            return res;
+          }
+
+          const ids = nodes.map(x => x.id);
+          const idxMap = new Map(ids.map((id, i) => [id, i]));
+          const nodeMap = new Map(nodes.map(x => [x.id, x]));
+
+          const outAdj = Array.from({ length: n }, () => []);
+          const inAdj = Array.from({ length: n }, () => []);
+          const undAdj = Array.from({ length: n }, () => new Set());
+
+          for (const e of edges) {
+            const u = idxMap.get(e.source);
+            const v = idxMap.get(e.target);
+            if (u === undefined || v === undefined) continue;
+            outAdj[u].push({ to: v, edgeId: e.id });
+            inAdj[v].push({ from: u, edgeId: e.id });
+            undAdj[u].add(v);
+            undAdj[v].add(u);
+          }
+
+          // 1. Density
+          res.density = n > 1 ? m / (n * (n - 1)) : 0;
+
+          // 2. Weakly Connected Components + Isolated Nodes
+          const visited = new Uint8Array(n);
+          let compCount = 0;
+          const compSizes = [];
+          for (let i = 0; i < n; i++) {
+            if (outAdj[i].length === 0 && inAdj[i].length === 0) {
+              res.isolatedNodes.add(ids[i]);
+            }
+            if (!visited[i]) {
+              const queue = [i];
+              visited[i] = 1;
+              let head = 0;
+              while (head < queue.length) {
+                const cur = queue[head++];
+                res.componentMap.set(ids[cur], compCount);
+                for (const nb of undAdj[cur]) {
+                  if (!visited[nb]) {
+                    visited[nb] = 1;
+                    queue.push(nb);
+                  }
+                }
+              }
+              compSizes.push(queue.length);
+              compCount++;
+            }
+          }
+          res.components = compCount;
+
+          // 3. Tarjan's Strongly Connected Components (Cycle Detector)
+          let tarjanIdx = 0;
+          const disc = new Int32Array(n).fill(-1);
+          const low = new Int32Array(n);
+          const onStack = new Uint8Array(n);
+          const stack = [];
+          const sccs = [];
+
+          function strongConnect(v) {
+            disc[v] = low[v] = tarjanIdx++;
+            stack.push(v);
+            onStack[v] = 1;
+
+            for (const { to } of outAdj[v]) {
+              if (disc[to] === -1) {
+                strongConnect(to);
+                if (low[to] < low[v]) low[v] = low[to];
+              } else if (onStack[to]) {
+                if (disc[to] < low[v]) low[v] = disc[to];
+              }
+            }
+
+            if (low[v] === disc[v]) {
+              const scc = [];
+              let w;
+              do {
+                w = stack.pop();
+                onStack[w] = 0;
+                scc.push(w);
+              } while (w !== v);
+              sccs.push(scc);
+            }
+          }
+
+          for (let i = 0; i < n; i++) {
+            if (disc[i] === -1) strongConnect(i);
+          }
+
+          let hasCycle = false;
+          for (const scc of sccs) {
+            if (scc.length > 1) {
+              hasCycle = true;
+              const sccSet = new Set(scc);
+              for (const u of scc) {
+                res.cycleNodes.add(ids[u]);
+                for (const { to, edgeId } of outAdj[u]) {
+                  if (sccSet.has(to)) res.cycleEdges.add(edgeId);
+                }
+              }
+            }
+          }
+          res.isDAG = !hasCycle;
+
+          // 4. Topological Layers & Critical Path (Active subgraph)
+          const indeg = new Int32Array(n);
+          for (let u = 0; u < n; u++) {
+            for (const { to } of outAdj[u]) indeg[to]++;
+          }
+          const q = [];
+          const layer = new Int32Array(n).fill(0);
+          for (let i = 0; i < n; i++) {
+            if (indeg[i] === 0) q.push(i);
+          }
+          const topoOrder = [];
+          let qHead = 0;
+          while (qHead < q.length) {
+            const u = q[qHead++];
+            topoOrder.push(u);
+            for (const { to } of outAdj[u]) {
+              if (layer[u] + 1 > layer[to]) layer[to] = layer[u] + 1;
+              if (--indeg[to] === 0) q.push(to);
+            }
+          }
+          let maxLayer = 0;
+          for (let i = 0; i < n; i++) {
+            if (indeg[i] > 0) layer[i] = Math.max(maxLayer + 1, 1);
+            if (layer[i] > maxLayer) maxLayer = layer[i];
+          }
+          for (let i = 0; i < n; i++) res.topoLayer.set(ids[i], layer[i]);
+
+          // Active Critical Path via DP on active DAG edges
+          const actIndeg = new Int32Array(n);
+          const actOut = Array.from({ length: n }, () => []);
+          for (const e of edges) {
+            const u = idxMap.get(e.source);
+            const v = idxMap.get(e.target);
+            if (u === undefined || v === undefined) continue;
+            if (!nodeMap.get(e.source).done && !nodeMap.get(e.target).done) {
+              actOut[u].push({ to: v, edgeId: e.id });
+              actIndeg[v]++;
+            }
+          }
+          const aq = [];
+          for (let i = 0; i < n; i++) {
+            if (!nodes[i].done && actIndeg[i] === 0) aq.push(i);
+          }
+          const dist = new Int32Array(n).fill(0);
+          const parentNode = new Int32Array(n).fill(-1);
+          const parentEdge = new Array(n).fill(null);
+          let ah = 0;
+          while (ah < aq.length) {
+            const u = aq[ah++];
+            for (const { to, edgeId } of actOut[u]) {
+              if (dist[u] + 1 > dist[to]) {
+                dist[to] = dist[u] + 1;
+                parentNode[to] = u;
+                parentEdge[to] = edgeId;
+              }
+              if (--actIndeg[to] === 0) aq.push(to);
+            }
+          }
+          let bestEnd = -1, bestDist = 0;
+          for (let i = 0; i < n; i++) {
+            if (!nodes[i].done && dist[i] > bestDist) {
+              bestDist = dist[i];
+              bestEnd = i;
+            }
+          }
+          res.longestPathLen = bestDist;
+          if (bestEnd !== -1 && bestDist > 0) {
+            let cur = bestEnd;
+            while (cur !== -1) {
+              res.criticalNodes.add(ids[cur]);
+              if (parentEdge[cur]) res.criticalEdges.add(parentEdge[cur]);
+              cur = parentNode[cur];
+            }
+          }
+
+          // 5. PageRank (damping = 0.85, 40 iterations)
+          const d = 0.85;
+          let pr = new Float64Array(n).fill(1 / n);
+          for (let iter = 0; iter < 40; iter++) {
+            const next = new Float64Array(n).fill((1 - d) / n);
+            let danglingSum = 0;
+            for (let i = 0; i < n; i++) {
+              if (outAdj[i].length === 0) {
+                danglingSum += pr[i];
+              } else {
+                const share = (d * pr[i]) / outAdj[i].length;
+                for (const { to } of outAdj[i]) next[to] += share;
+              }
+            }
+            const dangShare = (d * danglingSum) / n;
+            for (let i = 0; i < n; i++) next[i] += dangShare;
+            pr = next;
+          }
+          for (let i = 0; i < n; i++) res.pagerank.set(ids[i], pr[i]);
+
+          // 6. HITS (Hubs & Authorities)
+          let auth = new Float64Array(n).fill(1 / Math.sqrt(n));
+          let hub = new Float64Array(n).fill(1 / Math.sqrt(n));
+          for (let iter = 0; iter < 30; iter++) {
+            const nextAuth = new Float64Array(n);
+            const nextHub = new Float64Array(n);
+            let aNorm = 0, hNorm = 0;
+            for (let i = 0; i < n; i++) {
+              let s = 0;
+              for (const { from } of inAdj[i]) s += hub[from];
+              nextAuth[i] = s;
+              aNorm += s * s;
+            }
+            aNorm = Math.sqrt(aNorm) || 1;
+            for (let i = 0; i < n; i++) nextAuth[i] /= aNorm;
+
+            for (let i = 0; i < n; i++) {
+              let s = 0;
+              for (const { to } of outAdj[i]) s += nextAuth[to];
+              nextHub[i] = s;
+              hNorm += s * s;
+            }
+            hNorm = Math.sqrt(hNorm) || 1;
+            for (let i = 0; i < n; i++) nextHub[i] /= hNorm;
+
+            auth = nextAuth;
+            hub = nextHub;
+          }
+          for (let i = 0; i < n; i++) {
+            res.authorities.set(ids[i], auth[i]);
+            res.hubs.set(ids[i], hub[i]);
+          }
+
+          // 7. Brandes Betweenness Centrality (Directed)
+          const cb = new Float64Array(n);
+          for (let s = 0; s < n; s++) {
+            const S = [];
+            const P = Array.from({ length: n }, () => []);
+            const sigma = new Float64Array(n);
+            const distB = new Int32Array(n).fill(-1);
+            sigma[s] = 1;
+            distB[s] = 0;
+            const Q = [s];
+            let qh = 0;
+            while (qh < Q.length) {
+              const v = Q[qh++];
+              S.push(v);
+              for (const { to: w } of outAdj[v]) {
+                if (distB[w] < 0) {
+                  Q.push(w);
+                  distB[w] = distB[v] + 1;
+                }
+                if (distB[w] === distB[v] + 1) {
+                  sigma[w] += sigma[v];
+                  P[w].push(v);
+                }
+              }
+            }
+            const delta = new Float64Array(n);
+            while (S.length > 0) {
+              const w = S.pop();
+              for (const v of P[w]) {
+                delta[v] += (sigma[v] / (sigma[w] || 1)) * (1 + delta[w]);
+              }
+              if (w !== s) cb[w] += delta[w];
+            }
+          }
+          const normB = n > 2 ? (n - 1) * (n - 2) : 1;
+          for (let i = 0; i < n; i++) res.betweenness.set(ids[i], cb[i] / normB);
+
+          // 8. Algebraic Connectivity (lambda_2) & Fiedler Vector (v_2)
+          if (n >= 2 && n <= 90) {
+            const L = Array.from({ length: n }, () => new Array(n).fill(0));
+            for (let i = 0; i < n; i++) {
+              L[i][i] = undAdj[i].size;
+              for (const nb of undAdj[i]) L[i][nb] = -1;
+            }
+            const eig = jacobiEigenSymmetric(L, 50);
+            res.lambda2 = Math.max(0, eig.values[1] || 0);
+
+            // If disconnected, compute Fiedler split on largest component for clean A/B partition
+            let fiedlerVec = eig.vectors[1] || new Array(n).fill(0);
+            if (compCount > 1) {
+              for (let i = 0; i < n; i++) {
+                const c = res.componentMap.get(ids[i]) || 0;
+                res.fiedlerGroup.set(ids[i], c % 2 === 0 ? 'A' : 'B');
+                res.fiedlerValues.set(ids[i], c % 2 === 0 ? 1 : -1);
+              }
+            } else {
+              for (let i = 0; i < n; i++) {
+                const val = fiedlerVec[i] || 0;
+                res.fiedlerValues.set(ids[i], val);
+                res.fiedlerGroup.set(ids[i], val >= 0 ? 'A' : 'B');
+              }
+            }
+          } else if (n > 90) {
+            res.lambda2 = compCount > 1 ? 0 : 0.001;
+            for (let i = 0; i < n; i++) {
+              res.fiedlerGroup.set(ids[i], i < n / 2 ? 'A' : 'B');
+              res.fiedlerValues.set(ids[i], i < n / 2 ? 1 : -1);
+            }
+          }
+
+          // 9. Spectral Radius rho(A) of directed adjacency matrix
+          if (res.isDAG) {
+            res.rho = 0; // Nilpotent adjacency matrix of any DAG has spectral radius 0
+          } else {
+            let v = new Float64Array(n).fill(1 / Math.sqrt(n));
+            let lam = 0;
+            for (let iter = 0; iter < 50; iter++) {
+              const next = new Float64Array(n);
+              for (let u = 0; u < n; u++) {
+                for (const { to } of outAdj[u]) next[to] += v[u];
+              }
+              let norm = 0;
+              for (let i = 0; i < n; i++) norm += next[i] * next[i];
+              norm = Math.sqrt(norm);
+              if (norm < 1e-10) { lam = 0; break; }
+              let ray = 0;
+              for (let i = 0; i < n; i++) {
+                next[i] /= norm;
+                ray += v[i] * next[i];
+              }
+              lam = norm;
+              v = next;
+            }
+            res.rho = lam;
+          }
+
+          // 10. Transitive Reduction (Redundant Shortcut Edges)
+          for (const e of edges) {
+            const u = idxMap.get(e.source);
+            const v = idxMap.get(e.target);
+            if (u === undefined || v === undefined) continue;
+            // BFS from u to v skipping direct edge e.id
+            const seen = new Uint8Array(n);
+            seen[u] = 1;
+            const bfs = [u];
+            let bh = 0;
+            let reachable = false;
+            while (bh < bfs.length && !reachable) {
+              const cur = bfs[bh++];
+              for (const { to, edgeId } of outAdj[cur]) {
+                if (edgeId === e.id) continue;
+                if (to === v) { reachable = true; break; }
+                if (!seen[to]) {
+                  seen[to] = 1;
+                  bfs.push(to);
+                }
+              }
+            }
+            if (reachable) res.redundantEdges.add(e.id);
+          }
+
+          analysis = res;
+          return res;
+        }
+
+        // =====================================================================
+        // 5. SORT / LAYOUT TARGETS & CANVAS GUIDES
+        // =====================================================================
+        function computeSortTargets() {
+          layoutGuides = [];
+          const vis = getVisibleNodes();
+          if (vis.length === 0 || state.sortMode === 'force') {
+            renderLayoutGuides();
+            return;
+          }
+
+          const rankOrder = new Map(state.ranks.map((r, i) => [r, i]));
+
+          function placeColumns(groups) {
+            const colGap = 230;
+            const totalW = (groups.length - 1) * colGap;
+            const startX = -totalW / 2;
+
+            groups.forEach((g, colIdx) => {
+              const x = startX + colIdx * colGap;
+              let totalH = 0;
+              const spacing = g.nodes.map(n => n.targetR * 2 + 44);
+              for (const s of spacing) totalH += s;
+              let curY = -totalH / 2 + (spacing[0] || 0) / 2;
+
+              layoutGuides.push({
+                type: 'header',
+                x,
+                y: -totalH / 2 - 42,
+                text: g.label
+              });
+
+              g.nodes.forEach((n, idx) => {
+                n.tx = x;
+                n.ty = curY;
+                curY += (spacing[idx] || 70) / 2 + (spacing[idx + 1] || 70) / 2;
+              });
+            });
+          }
+
+          if (state.sortMode === 'rank') {
+            const byRank = new Map();
+            for (const r of state.ranks) byRank.set(r, []);
+            for (const n of vis) {
+              if (!byRank.has(n.rank)) byRank.set(n.rank, []);
+              byRank.get(n.rank).push(n);
+            }
+            const groups = [];
+            for (const [r, list] of byRank.entries()) {
+              if (list.length > 0) {
+                list.sort((a, b) => (b.activeIn || 0) - (a.activeIn || 0));
+                groups.push({ label: `Rank ${r}`, nodes: list });
+              }
+            }
+            placeColumns(groups);
+          } else if (state.sortMode === 'status') {
+            const active = vis.filter(n => !n.done).sort((a, b) => (rankOrder.get(a.rank) ?? 99) - (rankOrder.get(b.rank) ?? 99));
+            const done = vis.filter(n => n.done).sort((a, b) => (rankOrder.get(a.rank) ?? 99) - (rankOrder.get(b.rank) ?? 99));
+            const groups = [];
+            if (active.length) groups.push({ label: `Active (${active.length})`, nodes: active });
+            if (done.length) groups.push({ label: `Done (${done.length})`, nodes: done });
+            placeColumns(groups);
+          } else if (state.sortMode === 'topo') {
+            const byLayer = new Map();
+            for (const n of vis) {
+              const l = analysis.topoLayer.get(n.id) ?? 0;
+              if (!byLayer.has(l)) byLayer.set(l, []);
+              byLayer.get(l).push(n);
+            }
+            const sortedLayers = [...byLayer.keys()].sort((a, b) => a - b);
+            const groups = sortedLayers.map(l => ({
+              label: `Layer ${l}`,
+              nodes: byLayer.get(l).sort((a, b) => (rankOrder.get(a.rank) ?? 99) - (rankOrder.get(b.rank) ?? 99))
+            }));
+            placeColumns(groups);
+          } else if (state.sortMode === 'components') {
+            const byComp = new Map();
+            for (const n of vis) {
+              const c = analysis.componentMap.get(n.id) ?? 0;
+              if (!byComp.has(c)) byComp.set(c, []);
+              byComp.get(c).push(n);
+            }
+            const groups = [...byComp.entries()]
+              .sort((a, b) => b[1].length - a[1].length)
+              .map(([c, list], idx) => ({
+                label: `Cluster ${idx + 1} (${list.length})`,
+                nodes: list.sort((a, b) => (b.activeIn || 0) - (a.activeIn || 0))
+              }));
+            placeColumns(groups);
+          } else if (state.sortMode === 'radial') {
+            const byRank = new Map();
+            for (const n of vis) {
+              if (!byRank.has(n.rank)) byRank.set(n.rank, []);
+              byRank.get(n.rank).push(n);
+            }
+            const presentRanks = [...byRank.keys()].sort((a, b) => (rankOrder.get(a) ?? 99) - (rankOrder.get(b) ?? 99));
+            presentRanks.forEach((r, ringIdx) => {
+              const list = byRank.get(r);
+              const radius = ringIdx === 0 && list.length === 1 ? 0 : 115 + ringIdx * 115;
+              if (radius > 0) {
+                layoutGuides.push({ type: 'ring', r: radius, text: `Rank ${r}` });
+              }
+              list.forEach((n, i) => {
+                const angle = (2 * Math.PI * i) / list.length - Math.PI / 2;
+                n.tx = Math.cos(angle) * radius;
+                n.ty = Math.sin(angle) * radius;
+              });
+            });
+          } else {
+            // Metric-ordered grid: inDegree, outDegree, pagerank, betweenness
+            const outCounts = new Map();
+            for (const e of getVisibleEdges()) {
+              outCounts.set(e.source, (outCounts.get(e.source) || 0) + 1);
+            }
+
+            let scoreFn;
+            let titlePrefix;
+            if (state.sortMode === 'inDegree') {
+              scoreFn = n => n.activeIn || 0;
+              titlePrefix = 'Active In-Degree';
+            } else if (state.sortMode === 'outDegree') {
+              scoreFn = n => outCounts.get(n.id) || 0;
+              titlePrefix = 'Out-Degree';
+            } else if (state.sortMode === 'pagerank') {
+              scoreFn = n => analysis.pagerank.get(n.id) || 0;
+              titlePrefix = 'PageRank';
+            } else {
+              scoreFn = n => analysis.betweenness.get(n.id) || 0;
+              titlePrefix = 'Betweenness';
+            }
+
+            const sorted = [...vis].sort((a, b) => scoreFn(b) - scoreFn(a));
+            const cols = Math.min(4, Math.max(1, Math.ceil(Math.sqrt(sorted.length))));
+            const colGap = 210;
+            const rowGap = 155;
+            const rows = Math.ceil(sorted.length / cols);
+
+            layoutGuides.push({
+              type: 'header',
+              x: 0,
+              y: -((rows - 1) * rowGap) / 2 - 76,
+              text: `${titlePrefix} (Highest → Lowest)`
+            });
+
+            sorted.forEach((n, idx) => {
+              const col = idx % cols;
+              const row = Math.floor(idx / cols);
+              n.tx = (col - (cols - 1) / 2) * colGap;
+              n.ty = (row - (rows - 1) / 2) * rowGap;
+            });
+          }
+
+          renderLayoutGuides();
+        }
+
+        function renderLayoutGuides() {
+          guidesLayer.innerHTML = '';
+          for (const g of layoutGuides) {
+            if (g.type === 'header') {
+              const txt = svgEl('text', {
+                x: g.x,
+                y: g.y,
+                'text-anchor': 'middle',
+                fill: '#6c7484',
+                'font-family': 'var(--mono)',
+                'font-size': '11',
+                'font-weight': '600'
+              });
+              txt.textContent = g.text;
+              guidesLayer.appendChild(txt);
+            } else if (g.type === 'ring') {
+              const c = svgEl('circle', {
+                cx: 0,
+                cy: 0,
+                r: g.r,
+                fill: 'none',
+                stroke: '#20242d',
+                'stroke-width': '1',
+                'stroke-dasharray': '4 6'
+              });
+              guidesLayer.appendChild(c);
+              const txt = svgEl('text', {
+                x: 0,
+                y: -g.r - 6,
+                'text-anchor': 'middle',
+                fill: '#5c6373',
+                'font-family': 'var(--mono)',
+                'font-size': '10'
+              });
+              txt.textContent = g.text;
+              guidesLayer.appendChild(txt);
+            }
+          }
+        }
+
+        // =====================================================================
+        // 6. SVG RENDERING & VISUAL OVERLAYS
+        // =====================================================================
+        function updateArrowMarkers() {
+          const w = state.edgeWidth;
+          const markerSize = Math.round(9 + w * 1.45);
+          const ids = ['arrow-default', 'arrow-done', 'arrow-white', 'arrow-cyan', 'arrow-amber', 'arrow-red'];
+          for (const id of ids) {
+            const m = document.getElementById(id);
+            if (m) {
+              m.setAttribute('markerWidth', markerSize);
+              m.setAttribute('markerHeight', markerSize);
+            }
+          }
+        }
+
+        function syncSvgElements() {
+          const visNodes = getVisibleNodes();
+          const visEdges = getVisibleEdges();
+          const visNodeIds = new Set(visNodes.map(n => n.id));
+          const visEdgeIds = new Set(visEdges.map(e => e.id));
+
+          emptyHint.classList.toggle('hidden', state.nodes.length > 0);
+
+          // Remove stale edge elements
+          for (const [id, obj] of edgeEls.entries()) {
+            if (!visEdgeIds.has(id)) {
+              obj.g.remove();
+              edgeEls.delete(id);
+            }
+          }
+
+          // Add new edge elements
+          for (const e of visEdges) {
+            if (!edgeEls.has(e.id)) {
+              const g = svgEl('g', { 'data-edge-id': e.id });
+              const hit = svgEl('line', {
+                stroke: 'transparent',
+                'stroke-width': '18',
+                style: 'cursor:pointer;'
+              });
+              const line = svgEl('line', {
+                'stroke-linecap': 'round',
+                'pointer-events': 'none'
+              });
+              g.appendChild(hit);
+              g.appendChild(line);
+
+              hit.addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                selectEdge(e.id);
+              });
+
+              edgesLayer.appendChild(g);
+              edgeEls.set(e.id, { g, hit, line });
+            }
+          }
+
+          // Remove stale node elements
+          for (const [id, obj] of nodeEls.entries()) {
+            if (!visNodeIds.has(id)) {
+              obj.g.remove();
+              nodeEls.delete(id);
+            }
+          }
+
+          // Add new node elements
+          for (const n of visNodes) {
+            if (!nodeEls.has(n.id)) {
+              const g = svgEl('g', { 'data-node-id': n.id, style: 'cursor:pointer;' });
+              const halo = svgEl('circle', {
+                cx: 0,
+                cy: 0,
+                fill: 'none',
+                'stroke-width': '2',
+                'pointer-events': 'none'
+              });
+              const circle = svgEl('circle', {
+                cx: 0,
+                cy: 0
+              });
+              const rankText = svgEl('text', {
+                x: 0,
+                y: 0,
+                'text-anchor': 'middle',
+                'dominant-baseline': 'central',
+                'font-family': 'var(--mono)',
+                'font-weight': '700',
+                'pointer-events': 'none'
+              });
+              const titleText = svgEl('text', {
+                x: 0,
+                'text-anchor': 'middle',
+                'font-family': 'var(--sans)',
+                'font-size': '12',
+                'font-weight': '500',
+                'pointer-events': 'none'
+              });
+              const badgeG = svgEl('g', { 'pointer-events': 'none' });
+              const badgeRect = svgEl('rect', { rx: '5', ry: '5', height: '16' });
+              const badgeText = svgEl('text', {
+                'text-anchor': 'middle',
+                'dominant-baseline': 'central',
+                'font-family': 'var(--mono)',
+                'font-size': '9.5',
+                'font-weight': '700'
+              });
+              badgeG.appendChild(badgeRect);
+              badgeG.appendChild(badgeText);
+
+              g.appendChild(halo);
+              g.appendChild(circle);
+              g.appendChild(rankText);
+              g.appendChild(titleText);
+              g.appendChild(badgeG);
+
+              attachNodePointerEvents(g, n.id);
+              nodesLayer.appendChild(g);
+              nodeEls.set(n.id, { g, halo, circle, rankText, titleText, badgeG, badgeRect, badgeText });
+            }
+          }
+
+          applyVisualStyles();
+        }
+
+        function applyVisualStyles() {
+          const nodeMap = new Map(state.nodes.map(n => [n.id, n]));
+          const ov = state.overlay;
+
+          // Compute max scores for normalization in overlays
+          let maxPR = 0.0001, maxBT = 0.0001, maxAuth = 0.0001, maxHub = 0.0001;
+          for (const v of analysis.pagerank.values()) if (v > maxPR) maxPR = v;
+          for (const v of analysis.betweenness.values()) if (v > maxBT) maxBT = v;
+          for (const v of analysis.authorities.values()) if (v > maxAuth) maxAuth = v;
+          for (const v of analysis.hubs.values()) if (v > maxHub) maxHub = v;
+
+          // Style edges
+          for (const e of getVisibleEdges()) {
+            const obj = edgeEls.get(e.id);
+            if (!obj) continue;
+            const src = nodeMap.get(e.source);
+            const isSelected = state.selectedEdgeId === e.id;
+            const isDoneEdge = src && src.done;
+
+            let stroke = isDoneEdge ? '#3a404f' : '#8b94a5';
+            let width = state.edgeWidth;
+            let dash = isDoneEdge ? '6 5' : '';
+            let opacity = isDoneEdge ? 0.48 : 0.86;
+            let marker = isDoneEdge ? 'url(#arrow-done)' : 'url(#arrow-default)';
+
+            if (ov === 'critical') {
+              if (analysis.criticalEdges.has(e.id)) {
+                stroke = '#67e8f9';
+                width = state.edgeWidth * 1.35;
+                opacity = 1;
+                marker = 'url(#arrow-cyan)';
+              } else {
+                opacity = 0.16;
+              }
+            } else if (ov === 'cycles') {
+              if (analysis.cycleEdges.has(e.id)) {
+                stroke = '#f87171';
+                width = state.edgeWidth * 1.3;
+                opacity = 1;
+                marker = 'url(#arrow-red)';
+              } else {
+                opacity = 0.16;
+              }
+            } else if (ov === 'transitive') {
+              if (analysis.redundantEdges.has(e.id)) {
+                stroke = '#fbbf24';
+                width = state.edgeWidth * 1.25;
+                dash = '7 4';
+                opacity = 1;
+                marker = 'url(#arrow-amber)';
+              } else {
+                opacity = 0.3;
+              }
+            }
+
+            if (isSelected) {
+              stroke = '#ffffff';
+              width = state.edgeWidth * 1.35;
+              opacity = 1;
+              marker = 'url(#arrow-white)';
+            }
+
+            obj.line.setAttribute('stroke', stroke);
+            obj.line.setAttribute('stroke-width', width);
+            obj.line.setAttribute('stroke-opacity', opacity);
+            obj.line.setAttribute('marker-end', marker);
+            if (dash) obj.line.setAttribute('stroke-dasharray', dash);
+            else obj.line.removeAttribute('stroke-dasharray');
+          }
+
+          // Style nodes
+          for (const n of getVisibleNodes()) {
+            const obj = nodeEls.get(n.id);
+            if (!obj) continue;
+            const isSelected = state.selectedNodeId === n.id;
+            const isConnectSrc = state.connectSourceId === n.id;
+
+            let fill = n.done ? '#111317' : '#16181d';
+            let stroke = n.done ? '#4b5262' : '#cfd4dc';
+            let strokeWidth = isSelected ? 3 : 2;
+            let dash = n.done ? '4 4' : '';
+            let textFill = n.done ? '#697080' : '#f1f3f7';
+            let titleFill = n.done ? '#5e6575' : '#cfd4dc';
+            let opacity = n.done ? 0.58 : 1;
+            let haloStroke = 'none';
+            let badgeLabel = '';
+            let badgeBg = '#1c1f26';
+            let badgeFg = '#e6e8ec';
+
+            if (ov === 'pagerank') {
+              const score = analysis.pagerank.get(n.id) || 0;
+              const norm = score / maxPR;
+              badgeLabel = score.toFixed(2);
+              if (norm > 0.6) {
+                stroke = '#67e8f9';
+                haloStroke = 'rgba(103,232,249,0.35)';
+                badgeFg = '#67e8f9';
+              } else {
+                opacity = 0.35 + norm * 0.65;
+              }
+            } else if (ov === 'hits') {
+              const a = analysis.authorities.get(n.id) || 0;
+              const h = analysis.hubs.get(n.id) || 0;
+              const aN = a / maxAuth;
+              const hN = h / maxHub;
+              if (aN >= hN && a > 0.05) {
+                stroke = '#67e8f9';
+                badgeLabel = `A:${a.toFixed(2)}`;
+                badgeFg = '#67e8f9';
+              } else if (h > 0.05) {
+                stroke = '#ffffff';
+                badgeLabel = `H:${h.toFixed(2)}`;
+                badgeFg = '#ffffff';
+              } else {
+                opacity = 0.3;
+              }
+            } else if (ov === 'betweenness') {
+              const bt = analysis.betweenness.get(n.id) || 0;
+              badgeLabel = bt.toFixed(2);
+              if (bt > 0) {
+                const norm = bt / maxBT;
+                stroke = '#fbbf24';
+                haloStroke = `rgba(251,191,36,${0.15 + norm * 0.45})`;
+                badgeFg = '#fbbf24';
+              } else {
+                opacity = 0.32;
+              }
+            } else if (ov === 'critical') {
+              if (analysis.criticalNodes.has(n.id)) {
+                stroke = '#67e8f9';
+                strokeWidth = 3;
+                haloStroke = 'rgba(103,232,249,0.4)';
+                badgeLabel = 'CRIT';
+                badgeFg = '#67e8f9';
+              } else {
+                opacity = 0.22;
+              }
+            } else if (ov === 'cycles') {
+              if (analysis.cycleNodes.has(n.id)) {
+                stroke = '#f87171';
+                strokeWidth = 3;
+                haloStroke = 'rgba(248,113,113,0.4)';
+                badgeLabel = 'LOOP';
+                badgeFg = '#f87171';
+              } else {
+                opacity = 0.22;
+              }
+            } else if (ov === 'fiedler') {
+              const grp = analysis.fiedlerGroup.get(n.id) || 'A';
+              if (grp === 'A') {
+                fill = '#e6e8ec';
+                stroke = '#ffffff';
+                textFill = '#0b0c0e';
+                badgeLabel = 'A';
+              } else {
+                fill = '#14161a';
+                stroke = '#6c7484';
+                textFill = '#cfd4dc';
+                badgeLabel = 'B';
+              }
+            } else if (ov === 'isolated') {
+              if (analysis.isolatedNodes.has(n.id)) {
+                stroke = '#fbbf24';
+                strokeWidth = 2.8;
+                haloStroke = 'rgba(251,191,36,0.38)';
+                badgeLabel = 'deg=0';
+                badgeFg = '#fbbf24';
+              } else {
+                opacity = 0.24;
+              }
+            }
+
+            if (isSelected || isConnectSrc) {
+              stroke = '#ffffff';
+              strokeWidth = 3;
+              haloStroke = 'rgba(255,255,255,0.35)';
+              opacity = 1;
+            }
+
+            obj.g.setAttribute('opacity', opacity);
+            obj.circle.setAttribute('fill', fill);
+            obj.circle.setAttribute('stroke', stroke);
+            obj.circle.setAttribute('stroke-width', strokeWidth);
+            if (dash) obj.circle.setAttribute('stroke-dasharray', dash);
+            else obj.circle.removeAttribute('stroke-dasharray');
+
+            obj.halo.setAttribute('stroke', haloStroke);
+            obj.rankText.setAttribute('fill', textFill);
+            obj.rankText.textContent = n.rank;
+            obj.titleText.setAttribute('fill', titleFill);
+            obj.titleText.textContent = n.title;
+
+            if (badgeLabel) {
+              const bw = Math.max(24, badgeLabel.length * 6.5 + 10);
+              obj.badgeG.classList.remove('hidden');
+              obj.badgeRect.setAttribute('x', -bw / 2);
+              obj.badgeRect.setAttribute('y', -8);
+              obj.badgeRect.setAttribute('width', bw);
+              obj.badgeRect.setAttribute('fill', badgeBg);
+              obj.badgeRect.setAttribute('stroke', stroke);
+              obj.badgeRect.setAttribute('stroke-width', '1');
+              obj.badgeText.setAttribute('fill', badgeFg);
+              obj.badgeText.textContent = badgeLabel;
+            } else {
+              obj.badgeG.classList.add('hidden');
+            }
+          }
+        }
+
+        // =====================================================================
+        // 7. VANILLA JS PHYSICS & RENDER LOOP (requestAnimationFrame)
+        // =====================================================================
+        function stepPhysics() {
+          const vis = getVisibleNodes();
+          const visEdges = getVisibleEdges();
+          const nodeMap = new Map(vis.map(n => [n.id, n]));
+
+          // Smoothly animate node radius toward targetR
+          for (const n of vis) {
+            n.displayR += (n.targetR - n.displayR) * 0.18;
+            if (Math.abs(n.targetR - n.displayR) < 0.08) n.displayR = n.targetR;
+          }
+
+          if (state.sortMode === 'force') {
+            const nLen = vis.length;
+            // Repulsion + collision separation
+            for (let i = 0; i < nLen; i++) {
+              const a = vis[i];
+              for (let j = i + 1; j < nLen; j++) {
+                const b = vis[j];
+                let dx = b.x - a.x;
+                let dy = b.y - a.y;
+                let distSq = dx * dx + dy * dy;
+                if (distSq < 1) {
+                  dx = (Math.random() - 0.5) * 2;
+                  dy = (Math.random() - 0.5) * 2;
+                  distSq = dx * dx + dy * dy;
+                }
+                const dist = Math.sqrt(distSq);
+                const ux = dx / dist;
+                const uy = dy / dist;
+
+                // Coulomb repulsion
+                const repulse = 3200 / Math.max(distSq, 220);
+                a.vx -= ux * repulse;
+                a.vy -= uy * repulse;
+                b.vx += ux * repulse;
+                b.vy += uy * repulse;
+
+                // Collision separation using actual radii
+                const minDist = a.displayR + b.displayR + 30;
+                if (dist < minDist) {
+                  const overlap = (minDist - dist) * 0.22;
+                  a.vx -= ux * overlap;
+                  a.vy -= uy * overlap;
+                  b.vx += ux * overlap;
+                  b.vy += uy * overlap;
+                }
+              }
+            }
+
+            // Spring attraction along edges
+            for (const e of visEdges) {
+              const a = nodeMap.get(e.source);
+              const b = nodeMap.get(e.target);
+              if (!a || !b) continue;
+              const dx = b.x - a.x;
+              const dy = b.y - a.y;
+              const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+              const targetLen = a.displayR + b.displayR + 95;
+              const force = (dist - targetLen) * 0.024;
+              const fx = (dx / dist) * force;
+              const fy = (dy / dist) * force;
+              a.vx += fx;
+              a.vy += fy;
+              b.vx -= fx;
+              b.vy -= fy;
+            }
+
+            // Gentle center gravity + integration
+            for (const n of vis) {
+              if (interaction.type === 'dragNode' && interaction.nodeId === n.id) {
+                n.vx = 0;
+                n.vy = 0;
+                continue;
+              }
+              n.vx += (0 - n.x) * 0.0045;
+              n.vy += (0 - n.y) * 0.0045;
+              n.vx *= 0.80;
+              n.vy *= 0.80;
+              n.x += Math.max(-24, Math.min(24, n.vx));
+              n.y += Math.max(-24, Math.min(24, n.vy));
+            }
+          } else {
+            // Smooth spring-to-target interpolation for sorted layouts
+            for (const n of vis) {
+              if (interaction.type === 'dragNode' && interaction.nodeId === n.id) {
+                n.vx = 0;
+                n.vy = 0;
+                continue;
+              }
+              n.vx = (n.vx + (n.tx - n.x) * 0.14) * 0.68;
+              n.vy = (n.vy + (n.ty - n.y) * 0.14) * 0.68;
+              n.x += n.vx;
+              n.y += n.vy;
+            }
+          }
+
+          // Render node positions & dynamic radii
+          for (const n of vis) {
+            const obj = nodeEls.get(n.id);
+            if (!obj) continue;
+            const r = n.displayR;
+            obj.g.setAttribute('transform', `translate(${n.x.toFixed(2)}, ${n.y.toFixed(2)})`);
+            obj.circle.setAttribute('r', r.toFixed(2));
+            obj.halo.setAttribute('r', (r + 5).toFixed(2));
+
+            // Scale rank label inside circle with radius
+            const rankLen = String(n.rank).length;
+            const baseFont = Math.max(11, Math.min(34, r * 0.62));
+            const fontSize = rankLen > 2 ? baseFont * 0.72 : (rankLen === 2 ? baseFont * 0.86 : baseFont);
+            obj.rankText.setAttribute('font-size', fontSize.toFixed(1));
+
+            obj.titleText.setAttribute('y', (r + 16).toFixed(2));
+            obj.badgeG.setAttribute('transform', `translate(0, ${(-r - 12).toFixed(2)})`);
+          }
+
+          // Render edge endpoints terminating cleanly at target perimeter
+          const arrowPad = Math.max(4, state.edgeWidth * 0.85);
+          for (const e of visEdges) {
+            const obj = edgeEls.get(e.id);
+            const src = nodeMap.get(e.source);
+            const tgt = nodeMap.get(e.target);
+            if (!obj || !src || !tgt) continue;
+
+            const dx = tgt.x - src.x;
+            const dy = tgt.y - src.y;
+            const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+            const ux = dx / dist;
+            const uy = dy / dist;
+
+            const x1 = src.x + ux * (src.displayR + 2);
+            const y1 = src.y + uy * (src.displayR + 2);
+            const x2 = tgt.x - ux * (tgt.displayR + arrowPad);
+            const y2 = tgt.y - uy * (tgt.displayR + arrowPad);
+
+            obj.line.setAttribute('x1', x1.toFixed(2));
+            obj.line.setAttribute('y1', y1.toFixed(2));
+            obj.line.setAttribute('x2', x2.toFixed(2));
+            obj.line.setAttribute('y2', y2.toFixed(2));
+            obj.hit.setAttribute('x1', x1.toFixed(2));
+            obj.hit.setAttribute('y1', y1.toFixed(2));
+            obj.hit.setAttribute('x2', x2.toFixed(2));
+            obj.hit.setAttribute('y2', y2.toFixed(2));
+          }
+
+          requestAnimationFrame(stepPhysics);
+        }
+
+        // =====================================================================
+        // 8. FULL GRAPH REFRESH PIPELINE
+        // =====================================================================
+        function refreshAll(shouldSave = true) {
+          recomputeNodeTargetRadii();
+          analyzeGraph();
+          computeSortTargets();
+          syncSvgElements();
+          renderGraphLabMetrics();
+          if (state.selectedNodeId) renderInspector();
+          if (shouldSave) saveLocal();
+        }
+
+        // =====================================================================
+        // 9. NODE & EDGE CRUD
+        // =====================================================================
+        function addNode(title, rank, x, y) {
+          const cleanTitle = title.trim();
+          if (!cleanTitle) return;
+          const node = {
+            id: uid('n'),
+            title: cleanTitle,
+            rank: rank || state.ranks[0] || '1',
+            notes: '',
+            done: false,
+            x,
+            y,
+            vx: 0,
+            vy: 0,
+            targetR: 17,
+            displayR: 12,
+            tx: x,
+            ty: y
+          };
+          state.nodes.push(node);
+          state.hiddenRanks.delete(node.rank);
+          renderRankBar();
+          refreshAll(true);
+          selectNode(node.id);
+        }
+
+        function addEdge(sourceId, targetId) {
+          if (!sourceId || !targetId || sourceId === targetId) return;
+          const exists = state.edges.some(e => e.source === sourceId && e.target === targetId);
+          if (exists) {
+            showToast('Edge already exists');
+            return;
+          }
+          state.edges.push({ id: uid('e'), source: sourceId, target: targetId });
+          refreshAll(true);
+        }
+
+        function deleteEdge(edgeId) {
+          state.edges = state.edges.filter(e => e.id !== edgeId);
+          if (state.selectedEdgeId === edgeId) {
+            state.selectedEdgeId = null;
+            updateActionBanner();
+          }
+          refreshAll(true);
+        }
+
+        function deleteNode(nodeId) {
+          state.nodes = state.nodes.filter(n => n.id !== nodeId);
+          state.edges = state.edges.filter(e => e.source !== nodeId && e.target !== nodeId);
+          if (state.selectedNodeId === nodeId) closeInspector();
+          refreshAll(true);
+        }
+
+        function toggleNodeDone(nodeId) {
+          const node = getNodeById(nodeId);
+          if (!node) return;
+          node.done = !node.done;
+          refreshAll(true);
+        }
+
+        // =====================================================================
+        // 10. CANVAS & NODE POINTER INTERACTIONS
+        // =====================================================================
+        function attachNodePointerEvents(g, nodeId) {
+          g.addEventListener('contextmenu', (e) => e.preventDefault());
+
+          g.addEventListener('pointerdown', (e) => {
+            e.stopPropagation();
+            closeSortMenu();
+            closeAddPopover();
+
+            const node = getNodeById(nodeId);
+            if (!node) return;
+
+            // Shift+Drag or Right-Click+Drag starts drawing a directed edge
+            if (e.shiftKey || e.button === 2) {
+              interaction = {
+                type: 'dragEdge',
+                sourceNodeId: nodeId,
+                startScreenX: e.clientX,
+                startScreenY: e.clientY,
+                dragMoved: true
+              };
+              const wp = screenToWorld(e.clientX, e.clientY);
+              connectPreview.setAttribute('x1', node.x);
+              connectPreview.setAttribute('y1', node.y);
+              connectPreview.setAttribute('x2', wp.x);
+              connectPreview.setAttribute('y2', wp.y);
+              connectPreview.classList.remove('hidden');
+              svg.setPointerCapture(e.pointerId);
+              return;
+            }
+
+            if (e.button !== 0) return;
+
+            // Click-to-connect mode ('E')
+            if (state.connectMode) {
+              if (!state.connectSourceId) {
+                state.connectSourceId = nodeId;
+                updateActionBanner();
+                applyVisualStyles();
+              } else if (state.connectSourceId === nodeId) {
+                state.connectSourceId = null;
+                updateActionBanner();
+                applyVisualStyles();
+              } else {
+                addEdge(state.connectSourceId, nodeId);
+                state.connectSourceId = null;
+                updateActionBanner();
+                applyVisualStyles();
+              }
+              return;
+            }
+
+            // Standard drag or click
+            interaction = {
+              type: 'dragNode',
+              nodeId,
+              startScreenX: e.clientX,
+              startScreenY: e.clientY,
+              dragMoved: false
+            };
+            svg.setPointerCapture(e.pointerId);
+          });
+        }
+
+        svg.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // Pan on empty canvas drag
+        svg.addEventListener('pointerdown', (e) => {
+          if (e.target !== svg && e.target !== bgRect) return;
+          closeSortMenu();
+          closeAddPopover();
+          if (e.button !== 0) return;
+
+          interaction = {
+            type: 'pan',
+            startScreenX: e.clientX,
+            startScreenY: e.clientY,
+            startViewX: state.view.x,
+            startViewY: state.view.y,
+            dragMoved: false
+          };
+          svg.setPointerCapture(e.pointerId);
+        });
+
+        svg.addEventListener('pointermove', (e) => {
+          if (!interaction.type) return;
+          const dx = e.clientX - interaction.startScreenX;
+          const dy = e.clientY - interaction.startScreenY;
+          if (Math.hypot(dx, dy) > 4) interaction.dragMoved = true;
+
+          if (interaction.type === 'pan') {
+            state.view.x = interaction.startViewX + dx;
+            state.view.y = interaction.startViewY + dy;
+            applyViewportTransform();
+          } else if (interaction.type === 'dragNode') {
+            const node = getNodeById(interaction.nodeId);
+            if (node) {
+              const wp = screenToWorld(e.clientX, e.clientY);
+              node.x = wp.x;
+              node.y = wp.y;
+              node.tx = wp.x;
+              node.ty = wp.y;
+            }
+          } else if (interaction.type === 'dragEdge') {
+            const src = getNodeById(interaction.sourceNodeId);
+            if (src) {
+              const wp = screenToWorld(e.clientX, e.clientY);
+              connectPreview.setAttribute('x1', src.x);
+              connectPreview.setAttribute('y1', src.y);
+              connectPreview.setAttribute('x2', wp.x);
+              connectPreview.setAttribute('y2', wp.y);
+            }
+          }
+        });
+
+        svg.addEventListener('pointerup', (e) => {
+          if (!interaction.type) return;
+          const cur = interaction;
+          interaction = { type: null };
+          try { svg.releasePointerCapture(e.pointerId); } catch (_) {}
+
+          if (cur.type === 'pan' && !cur.dragMoved) {
+            state.selectedEdgeId = null;
+            if (state.connectSourceId) state.connectSourceId = null;
+            closeInspector();
+            updateActionBanner();
+            applyVisualStyles();
+          } else if (cur.type === 'dragNode') {
+            if (!cur.dragMoved) {
+              selectNode(cur.nodeId);
+            } else {
+              saveLocal();
+            }
+          } else if (cur.type === 'dragEdge') {
+            connectPreview.classList.add('hidden');
+            const wp = screenToWorld(e.clientX, e.clientY);
+            // Hit-test target node by world coordinates
+            let targetNode = null;
+            for (const n of getVisibleNodes()) {
+              if (n.id === cur.sourceNodeId) continue;
+              const d = Math.hypot(wp.x - n.x, wp.y - n.y);
+              if (d <= n.displayR + 12) {
+                targetNode = n;
+                break;
+              }
+            }
+            if (targetNode) {
+              addEdge(cur.sourceNodeId, targetNode.id);
+            }
+          }
+        });
+
+        // Double-click empty canvas to open compact Add-Node popup
+        svg.addEventListener('dblclick', (e) => {
+          if (e.target !== svg && e.target !== bgRect) return;
+          const wp = screenToWorld(e.clientX, e.clientY);
+          openAddPopover(e.clientX, e.clientY, wp.x, wp.y);
+        });
+
+        // Smooth wheel zoom toward cursor
+        svg.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          const rect = getSvgRect();
+          const mx = e.clientX - rect.left;
+          const my = e.clientY - rect.top;
+          const factor = e.deltaY < 0 ? 1.1 : 0.91;
+          const newK = Math.max(0.22, Math.min(3.5, state.view.k * factor));
+          const ratio = newK / state.view.k;
+          state.view.x = mx - (mx - state.view.x) * ratio;
+          state.view.y = my - (my - state.view.y) * ratio;
+          state.view.k = newK;
+          applyViewportTransform();
+        }, { passive: false });
+
+        // =====================================================================
+        // 11. UI RENDERERS (TOP BAR, SORT, LAB, INSPECTOR, MODALS)
+        // =====================================================================
+        function renderRankBar() {
+          rankFilterBar.innerHTML = '';
+          for (const r of state.ranks) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'rank-pill' + (state.hiddenRanks.has(r) ? ' hidden-rank' : '');
+            btn.textContent = r;
+            btn.title = state.hiddenRanks.has(r) ? `Show Rank ${r}` : `Hide Rank ${r}`;
+            btn.addEventListener('click', () => {
+              if (state.hiddenRanks.has(r)) state.hiddenRanks.delete(r);
+              else state.hiddenRanks.add(r);
+              renderRankBar();
+              refreshAll(false);
+            });
+            rankFilterBar.appendChild(btn);
+          }
+
+          const addBtn = document.createElement('button');
+          addBtn.type = 'button';
+          addBtn.className = 'rank-pill add-rank-btn';
+          addBtn.textContent = '+ Rank';
+          addBtn.addEventListener('click', openRanksModal);
+          rankFilterBar.appendChild(addBtn);
+        }
+
+        function renderSortMenu() {
+          const current = SORT_OPTIONS.find(o => o.id === state.sortMode) || SORT_OPTIONS[0];
+          sortCurrentLabel.textContent = current.label;
+          sortMenu.innerHTML = '';
+
+          for (const opt of SORT_OPTIONS) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'sort-item' + (opt.id === state.sortMode ? ' selected' : '');
+            btn.innerHTML = `
+              <div class="sort-item-title">
+                <span>${opt.label}</span>
+                ${opt.id === state.sortMode ? '<span style="font-family:var(--mono);font-size:10px;">✓</span>' : ''}
+              </div>
+              <div class="sort-item-desc">${opt.desc}</div>
+            `;
+            btn.addEventListener('click', () => {
+              state.sortMode = opt.id;
+              renderSortMenu();
+              closeSortMenu();
+              computeSortTargets();
+            });
+            sortMenu.appendChild(btn);
+          }
+        }
+
+        function closeSortMenu() {
+          sortMenu.classList.add('hidden');
+        }
+
+        function renderGraphLabOverlays() {
+          labOverlayList.innerHTML = '';
+          for (const ov of OVERLAY_OPTIONS) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'overlay-btn' + (state.overlay === ov.id ? ' active' : '');
+            btn.innerHTML = `
+              <div class="ov-name">
+                <span>${ov.name}</span>
+                ${state.overlay === ov.id ? '<span style="font-family:var(--mono);font-size:10px;color:var(--accent-cyan);">ON</span>' : ''}
+              </div>
+              <div class="ov-desc">${ov.desc}</div>
+            `;
+            btn.addEventListener('click', () => {
+              state.overlay = ov.id;
+              labDot.classList.toggle('hidden', state.overlay === 'none');
+              renderGraphLabOverlays();
+              renderGraphLabMetrics();
+              applyVisualStyles();
+            });
+            labOverlayList.appendChild(btn);
+          }
+        }
+
+        function renderGraphLabMetrics() {
+          document.getElementById('inv-counts').textContent = `${analysis.n} / ${analysis.m}`;
+          document.getElementById('inv-comp').textContent = String(analysis.components);
+          document.getElementById('inv-density').textContent = analysis.density.toFixed(3);
+          document.getElementById('inv-dag').textContent = analysis.n === 0 ? 'Empty' : (analysis.isDAG ? 'DAG' : 'Cyclic');
+          document.getElementById('inv-longest').textContent = String(analysis.longestPathLen);
+          document.getElementById('inv-lambda2').textContent = analysis.lambda2.toFixed(3);
+          document.getElementById('inv-rho').textContent = analysis.rho.toFixed(3);
+
+          // Prune redundant edges box
+          const redCount = analysis.redundantEdges.size;
+          if (state.overlay === 'transitive' && redCount > 0) {
+            labPruneBox.classList.remove('hidden');
+            labPruneText.textContent = `Found ${redCount} redundant shortcut edge${redCount > 1 ? 's' : ''} implied by longer paths.`;
+          } else {
+            labPruneBox.classList.add('hidden');
+          }
+
+          // Top-5 findings for active metric overlay
+          const vis = getVisibleNodes();
+          let rows = [];
+          let title = '';
+          if (state.overlay === 'pagerank') {
+            title = 'Top PageRank Nodes';
+            rows = vis.map(n => ({ n, val: (analysis.pagerank.get(n.id) || 0).toFixed(3), num: analysis.pagerank.get(n.id) || 0 }));
+          } else if (state.overlay === 'betweenness') {
+            title = 'Top Bottlenecks (Betweenness)';
+            rows = vis.map(n => ({ n, val: (analysis.betweenness.get(n.id) || 0).toFixed(3), num: analysis.betweenness.get(n.id) || 0 })).filter(r => r.num > 0);
+          } else if (state.overlay === 'hits') {
+            title = 'Top Authorities (HITS)';
+            rows = vis.map(n => ({ n, val: (analysis.authorities.get(n.id) || 0).toFixed(3), num: analysis.authorities.get(n.id) || 0 }));
+          } else if (state.overlay === 'isolated') {
+            title = 'Isolated Nodes (Degree 0)';
+            rows = vis.filter(n => analysis.isolatedNodes.has(n.id)).map(n => ({ n, val: 'deg=0', num: 1 }));
+          } else if (state.overlay === 'cycles') {
+            title = 'Nodes in Cycles';
+            rows = vis.filter(n => analysis.cycleNodes.has(n.id)).map(n => ({ n, val: 'SCC', num: 1 }));
+          }
+
+          rows.sort((a, b) => b.num - a.num);
+          const top5 = rows.slice(0, 5);
+          if (top5.length > 0) {
+            labTopSection.classList.remove('hidden');
+            labTopTitle.textContent = title;
+            labTopList.innerHTML = '';
+            for (const item of top5) {
+              const row = document.createElement('div');
+              row.className = 'neighbor-item';
+              row.innerHTML = `
+                <div class="neighbor-main">
+                  <span class="neighbor-badge">${item.n.rank}</span>
+                  <span class="neighbor-title">${escapeHtml(item.n.title)}</span>
+                </div>
+                <span style="font-family:var(--mono);font-size:11px;color:var(--accent-cyan);">${item.val}</span>
+              `;
+              row.querySelector('.neighbor-main').addEventListener('click', () => selectNode(item.n.id));
+              labTopList.appendChild(row);
+            }
+          } else {
+            labTopSection.classList.add('hidden');
+          }
+        }
+
+        function escapeHtml(str) {
+          return String(str).replace(/[&<>"']/g, c => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+          }[c]));
+        }
+
+        function selectNode(nodeId) {
+          state.selectedEdgeId = null;
+          state.selectedNodeId = nodeId;
+          updateActionBanner();
+          inspector.classList.remove('hidden');
+          renderInspector();
+          applyVisualStyles();
+        }
+
+        function closeInspector() {
+          state.selectedNodeId = null;
+          inspector.classList.add('hidden');
+          applyVisualStyles();
+        }
+
+        function selectEdge(edgeId) {
+          closeInspector();
+          state.selectedEdgeId = edgeId;
+          updateActionBanner();
+          applyVisualStyles();
+        }
+
+        function setConnectMode(active, initialSourceId = null) {
+          state.connectMode = active;
+          state.connectSourceId = active ? initialSourceId : null;
+          updateActionBanner();
+          applyVisualStyles();
+        }
+
+        function updateActionBanner() {
+          if (state.selectedEdgeId) {
+            const e = state.edges.find(x => x.id === state.selectedEdgeId);
+            if (!e) { actionBanner.classList.add('hidden'); return; }
+            const src = getNodeById(e.source);
+            const tgt = getNodeById(e.target);
+            actionBannerText.textContent = `${src ? src.title : '?'} → ${tgt ? tgt.title : '?'}`;
+            actionBannerDelete.classList.remove('hidden');
+            actionBanner.classList.remove('hidden');
+          } else if (state.connectMode) {
+            actionBannerDelete.classList.add('hidden');
+            if (state.connectSourceId) {
+              const src = getNodeById(state.connectSourceId);
+              actionBannerText.textContent = `Connect Mode: "${src ? src.title : ''}" → click target node`;
+            } else {
+              actionBannerText.textContent = 'Connect Mode [E]: click source node, then target node';
+            }
+            actionBanner.classList.remove('hidden');
+          } else {
+            actionBanner.classList.add('hidden');
+          }
+        }
+
+        function renderInspector() {
+          const n = getNodeById(state.selectedNodeId);
+          if (!n) { closeInspector(); return; }
+
+          inspBadge.textContent = n.rank;
+          inspTitle.value = n.title;
+          inspNotes.value = n.notes || '';
+
+          if (n.done) {
+            inspDoneBtn.classList.add('btn-primary');
+            inspDoneLabel.textContent = '✓ Marked Done (Click to Reopen)';
+          } else {
+            inspDoneBtn.classList.remove('btn-primary');
+            inspDoneLabel.textContent = 'Mark as Done';
+          }
+
+          // Rank picker
+          inspRankRow.innerHTML = '';
+          for (const r of state.ranks) {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'rank-choice' + (n.rank === r ? ' selected' : '');
+            b.textContent = r;
+            b.addEventListener('click', () => {
+              n.rank = r;
+              refreshAll(true);
+            });
+            inspRankRow.appendChild(b);
+          }
+
+          // Node metrics
+          const outEdges = state.edges.filter(e => e.source === n.id);
+          const inEdges = state.edges.filter(e => e.target === n.id);
+          document.getElementById('insp-m-pr').textContent = (analysis.pagerank.get(n.id) || 0).toFixed(3);
+          document.getElementById('insp-m-bt').textContent = (analysis.betweenness.get(n.id) || 0).toFixed(3);
+          document.getElementById('insp-m-hub').textContent = (analysis.hubs.get(n.id) || 0).toFixed(3);
+          document.getElementById('insp-m-auth').textContent = (analysis.authorities.get(n.id) || 0).toFixed(3);
+          document.getElementById('insp-m-in').textContent = String(n.activeIn || 0);
+          document.getElementById('insp-m-out').textContent = String(outEdges.length);
+
+          inspInLabel.textContent = `Active Fed By: ${n.activeIn || 0} (Total: ${inEdges.length})`;
+          inspRadiusPill.textContent = `r=${n.targetR}px`;
+
+          // Fed By list (with quick Done toggle per feeder)
+          inspInList.innerHTML = '';
+          if (inEdges.length === 0) {
+            inspInList.innerHTML = '<div style="font-size:11px;color:var(--dim);">No incoming edges</div>';
+          } else {
+            for (const e of inEdges) {
+              const src = getNodeById(e.source);
+              if (!src) continue;
+              const row = document.createElement('div');
+              row.className = 'neighbor-item';
+              row.innerHTML = `
+                <div class="neighbor-main">
+                  <span class="neighbor-badge">${escapeHtml(src.rank)}</span>
+                  <span class="neighbor-title ${src.done ? 'done' : ''}">${escapeHtml(src.title)}</span>
+                </div>
+                <button type="button" class="mini-btn">${src.done ? 'Reopen' : 'Done'}</button>
+              `;
+              row.querySelector('.neighbor-main').addEventListener('click', () => selectNode(src.id));
+              row.querySelector('.mini-btn').addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                toggleNodeDone(src.id);
+              });
+              inspInList.appendChild(row);
+            }
+          }
+
+          // Unlocks list
+          inspOutLabel.textContent = `Unlocks: ${outEdges.length}`;
+          inspOutList.innerHTML = '';
+          if (outEdges.length === 0) {
+            inspOutList.innerHTML = '<div style="font-size:11px;color:var(--dim);">No outgoing edges</div>';
+          } else {
+            for (const e of outEdges) {
+              const tgt = getNodeById(e.target);
+              if (!tgt) continue;
+              const row = document.createElement('div');
+              row.className = 'neighbor-item';
+              row.innerHTML = `
+                <div class="neighbor-main">
+                  <span class="neighbor-badge">${escapeHtml(tgt.rank)}</span>
+                  <span class="neighbor-title ${tgt.done ? 'done' : ''}">${escapeHtml(tgt.title)}</span>
+                </div>
+                <button type="button" class="mini-btn" title="Remove edge">✕</button>
+              `;
+              row.querySelector('.neighbor-main').addEventListener('click', () => selectNode(tgt.id));
+              row.querySelector('.mini-btn').addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                deleteEdge(e.id);
+              });
+              inspOutList.appendChild(row);
+            }
+          }
+        }
+
+        // Add Node Popover
+        function openAddPopover(screenX, screenY, worldX, worldY) {
+          state.popWorldPos = { x: worldX, y: worldY };
+          if (!state.ranks.includes(state.popRank)) state.popRank = state.ranks[0] || '1';
+
+          popRankRow.innerHTML = '';
+          for (const r of state.ranks) {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'rank-choice' + (state.popRank === r ? ' selected' : '');
+            b.textContent = r;
+            b.addEventListener('click', () => {
+              state.popRank = r;
+              for (const child of popRankRow.children) {
+                child.classList.toggle('selected', child.textContent === r);
+              }
+            });
+            popRankRow.appendChild(b);
+          }
+
+          const left = Math.max(12, Math.min(window.innerWidth - 296, screenX - 40));
+          const top = Math.max(56, Math.min(window.innerHeight - 210, screenY - 20));
+          addPopover.style.left = `${left}px`;
+          addPopover.style.top = `${top}px`;
+          addPopover.classList.remove('hidden');
+          popTitle.value = '';
+          setTimeout(() => popTitle.focus(), 10);
+        }
+
+        function closeAddPopover() {
+          addPopover.classList.add('hidden');
+        }
+
+        // Manage Ranks Modal
+        function openRanksModal() {
+          renderRanksManageList();
+          ranksModal.classList.remove('hidden');
+          setTimeout(() => newRankInput.focus(), 10);
+        }
+
+        function closeRanksModal() {
+          ranksModal.classList.add('hidden');
+        }
+
+        function renderRanksManageList() {
+          ranksManageList.innerHTML = '';
+          state.ranks.forEach((r, idx) => {
+            const count = state.nodes.filter(n => n.rank === r).length;
+            const row = document.createElement('div');
+            row.className = 'rank-manage-row';
+            row.innerHTML = `
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span class="neighbor-badge">${escapeHtml(r)}</span>
+                <span style="font-size:11px;color:var(--muted);">${count} node${count === 1 ? '' : 's'}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;">
+                <button type="button" class="mini-btn btn-up" ${idx === 0 ? 'disabled style="opacity:0.35;"' : ''}>↑</button>
+                <button type="button" class="mini-btn btn-dn" ${idx === state.ranks.length - 1 ? 'disabled style="opacity:0.35;"' : ''}>↓</button>
+                <button type="button" class="mini-btn btn-del" ${state.ranks.length <= 1 ? 'disabled style="opacity:0.35;"' : ''}>✕</button>
+              </div>
+            `;
+            row.querySelector('.btn-up').addEventListener('click', () => {
+              if (idx === 0) return;
+              [state.ranks[idx - 1], state.ranks[idx]] = [state.ranks[idx], state.ranks[idx - 1]];
+              renderRanksManageList();
+              renderRankBar();
+              refreshAll(true);
+            });
+            row.querySelector('.btn-dn').addEventListener('click', () => {
+              if (idx === state.ranks.length - 1) return;
+              [state.ranks[idx + 1], state.ranks[idx]] = [state.ranks[idx], state.ranks[idx + 1]];
+              renderRanksManageList();
+              renderRankBar();
+              refreshAll(true);
+            });
+            row.querySelector('.btn-del').addEventListener('click', () => {
+              if (state.ranks.length <= 1) return;
+              const fallback = state.ranks.find(x => x !== r);
+              for (const n of state.nodes) {
+                if (n.rank === r) n.rank = fallback;
+              }
+              state.ranks = state.ranks.filter(x => x !== r);
+              state.hiddenRanks.delete(r);
+              renderRanksManageList();
+              renderRankBar();
+              refreshAll(true);
+            });
+            ranksManageList.appendChild(row);
+          });
+        }
+
+        // GitHub Settings Modal
+        function openGithubModal() {
+          ghOwner.value = state.gh.owner || '';
+          ghRepo.value = state.gh.repo || '';
+          ghBranch.value = state.gh.branch || 'main';
+          ghPath.value = state.gh.path || 'data.json';
+          ghToken.value = state.gh.token || '';
+          ghStatus.classList.add('hidden');
+          ghModal.classList.remove('hidden');
+        }
+
+        function closeGithubModal() {
+          ghModal.classList.add('hidden');
+        }
+
+        function setEdgeWidth(val, persist = true) {
+          const w = Math.max(1.5, Math.min(10, parseFloat(val) || 3.5));
+          state.edgeWidth = w;
+          edgeSlider.value = w;
+          edgeVal.textContent = w.toFixed(1);
+          edgeSliderMobile.value = w;
+          edgeValMobile.textContent = `${w.toFixed(1)}px`;
+          updateArrowMarkers();
+          applyVisualStyles();
+          if (persist) saveLocal();
+        }
+
+        // =====================================================================
+        // 12. EVENT LISTENERS (EVERY BUTTON, DROPDOWN, SLIDER & SHORTCUT)
+        // =====================================================================
+        btnSort.addEventListener('click', (e) => {
+          e.stopPropagation();
+          sortMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!sortMenu.classList.contains('hidden') && !document.getElementById('sort-dropdown-wrap').contains(e.target)) {
+            closeSortMenu();
+          }
+        });
+
+        btnGraphLab.addEventListener('click', () => {
+          const opening = graphLabDrawer.classList.contains('hidden');
+          graphLabDrawer.classList.toggle('hidden', !opening);
+          btnGraphLab.classList.toggle('active', opening);
+        });
+        labClose.addEventListener('click', () => {
+          graphLabDrawer.classList.add('hidden');
+          btnGraphLab.classList.remove('active');
+        });
+        labResetOverlay.addEventListener('click', () => {
+          state.overlay = 'none';
+          labDot.classList.add('hidden');
+          renderGraphLabOverlays();
+          renderGraphLabMetrics();
+          applyVisualStyles();
+        });
+        btnPrune.addEventListener('click', () => {
+          const count = analysis.redundantEdges.size;
+          if (count === 0) return;
+          state.edges = state.edges.filter(e => !analysis.redundantEdges.has(e.id));
+          refreshAll(true);
+          showToast(`Pruned ${count} redundant edge${count > 1 ? 's' : ''}`);
+        });
+
+        edgeSlider.addEventListener('input', (e) => setEdgeWidth(e.target.value, false));
+        edgeSlider.addEventListener('change', (e) => setEdgeWidth(e.target.value, true));
+        edgeSliderMobile.addEventListener('input', (e) => setEdgeWidth(e.target.value, false));
+        edgeSliderMobile.addEventListener('change', (e) => setEdgeWidth(e.target.value, true));
+
+        btnSave.addEventListener('click', () => commitToGithub());
+        btnGhSettings.addEventListener('click', openGithubModal);
+
+        actionBannerDelete.addEventListener('click', () => {
+          if (state.selectedEdgeId) deleteEdge(state.selectedEdgeId);
+        });
+        actionBannerCancel.addEventListener('click', () => {
+          state.selectedEdgeId = null;
+          setConnectMode(false);
+          applyVisualStyles();
+        });
+
+        addPopoverForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const title = popTitle.value.trim();
+          if (!title) return;
+          addNode(title, state.popRank, state.popWorldPos.x, state.popWorldPos.y);
+          closeAddPopover();
+        });
+        addPopoverClose.addEventListener('click', closeAddPopover);
+        addPopoverCancel.addEventListener('click', closeAddPopover);
+
+        inspClose.addEventListener('click', closeInspector);
+        inspDoneBtn.addEventListener('click', () => {
+          if (state.selectedNodeId) toggleNodeDone(state.selectedNodeId);
+        });
+        inspTitle.addEventListener('input', () => {
+          const n = getNodeById(state.selectedNodeId);
+          if (!n) return;
+          n.title = inspTitle.value;
+          const obj = nodeEls.get(n.id);
+          if (obj) obj.titleText.textContent = n.title;
+          saveLocal();
+        });
+        inspNotes.addEventListener('input', () => {
+          const n = getNodeById(state.selectedNodeId);
+          if (!n) return;
+          n.notes = inspNotes.value;
+          saveLocal();
+        });
+        inspManageRanks.addEventListener('click', openRanksModal);
+        inspConnectBtn.addEventListener('click', () => {
+          if (state.selectedNodeId) {
+            setConnectMode(true, state.selectedNodeId);
+          }
+        });
+        inspDeleteBtn.addEventListener('click', () => {
+          if (state.selectedNodeId) deleteNode(state.selectedNodeId);
+        });
+
+        ranksClose.addEventListener('click', closeRanksModal);
+        ranksDone.addEventListener('click', closeRanksModal);
+        ranksModal.addEventListener('click', (e) => { if (e.target === ranksModal) closeRanksModal(); });
+        addRankForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const val = newRankInput.value.trim();
+          if (!val) return;
+          if (state.ranks.includes(val)) {
+            showToast(`Rank "${val}" already exists`);
+            return;
+          }
+          // Insert numeric ranks cleanly before ∞/X if possible
+          const infIdx = state.ranks.findIndex(r => r === '∞' || r === 'X');
+          if (infIdx !== -1 && /^\d+$/.test(val)) {
+            state.ranks.splice(infIdx, 0, val);
+          } else {
+            state.ranks.push(val);
+          }
+          newRankInput.value = '';
+          renderRanksManageList();
+          renderRankBar();
+          refreshAll(true);
+        });
+
+        ghClose.addEventListener('click', closeGithubModal);
+        ghModal.addEventListener('click', (e) => { if (e.target === ghModal) closeGithubModal(); });
+        ghClear.addEventListener('click', () => {
+          state.gh.token = '';
+          ghToken.value = '';
+          saveGithubConfig();
+          showToast('GitHub token cleared');
+        });
+        ghForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          state.gh.owner = ghOwner.value.trim();
+          state.gh.repo = ghRepo.value.trim();
+          state.gh.branch = ghBranch.value.trim() || 'main';
+          state.gh.path = ghPath.value.trim() || 'data.json';
+          state.gh.token = ghToken.value.trim();
+          saveGithubConfig();
+          closeGithubModal();
+          await commitToGithub();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+          const tag = (document.activeElement && document.activeElement.tagName || '').toLowerCase();
+          const typing = tag === 'input' || tag === 'textarea' || tag === 'select';
+
+          if (e.key === 'Escape') {
+            closeAddPopover();
+            closeSortMenu();
+            closeRanksModal();
+            closeGithubModal();
+            setConnectMode(false);
+            state.selectedEdgeId = null;
+            updateActionBanner();
+            applyVisualStyles();
+            return;
+          }
+          if (typing) return;
+
+          if (e.key === 'a' || e.key === 'A' || e.key === 'n' || e.key === 'N') {
+            e.preventDefault();
+            const rect = getSvgRect();
+            const sx = rect.left + rect.width / 2;
+            const sy = rect.top + rect.height / 2;
+            const wp = screenToWorld(sx, sy);
+            openAddPopover(sx, sy, wp.x, wp.y);
+          } else if (e.key === 'e' || e.key === 'E') {
+            setConnectMode(!state.connectMode);
+          } else if ((e.key === 'd' || e.key === 'D') && state.selectedNodeId) {
+            toggleNodeDone(state.selectedNodeId);
+          } else if ((e.key === 'Delete' || e.key === 'Backspace') && state.selectedEdgeId) {
+            e.preventDefault();
+            deleteEdge(state.selectedEdgeId);
+          }
+        });
+
+        // =====================================================================
+        // 13. SYNCHRONOUS BOOT + NON-BLOCKING ./data.json CHECK
+        // =====================================================================
+        loadGithubConfig();
+
+        let localData = null;
+        try {
+          const raw = localStorage.getItem(DATA_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (parsed && Array.isArray(parsed.nodes)) {
+              localData = parsed;
+              hydrateGraph(localData);
+            }
+          }
+        } catch (_) {}
+
+        centerViewport();
+        setEdgeWidth(state.edgeWidth, false);
+        renderRankBar();
+        renderSortMenu();
+        renderGraphLabOverlays();
+        refreshAll(false);
+        requestAnimationFrame(stepPhysics);
+
+        // Background fetch for ./data.json (silently ignored on 404 or non-JSON)
+        fetch('./data.json', { cache: 'no-store' })
+          .then(res => (res.ok ? res.json() : null))
+          .then(remote => {
+            if (!remote || !Array.isArray(remote.nodes)) return;
+            const rTime = Date.parse(remote.updatedAt || 0) || 0;
+            const lTime = localData ? (Date.parse(localData.updatedAt || 0) || 0) : 0;
+            if (!localData || rTime > lTime) {
+              hydrateGraph(remote);
+              setEdgeWidth(state.edgeWidth, false);
+              renderRankBar();
+              refreshAll(false);
+            }
+          })
+          .catch(() => {});
+      }
+
+      function safeBoot() {
+        try {
+          initApp();
+        } catch (err) {
+          console.error('Living Graph init error:', err);
+          showToast(`Init error: ${err.message}`, 6000);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', safeBoot);
+      } else {
+        safeBoot();
+      }
+    })();
+  </script>
+</body>
+</html>
